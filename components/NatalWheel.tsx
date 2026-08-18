@@ -193,12 +193,17 @@ export default function NatalWheel({
 
         {/* Планеты */}
         {planets.map((p, i) => {
-          const pos = pt(p.lon, radiusOf.get(p) ?? rPlanets);
+          const rp = radiusOf.get(p) ?? rPlanets;
+          const pos = pt(p.lon, rp);
           const tick1 = pt(p.lon, rInner);
           const tick2 = pt(p.lon, rInner - 8);
+          const edge = pt(p.lon, rp - 13);
+          const node = pt(p.lon, rAspect);
           return (
             <g key={p.symbol + i} className="wheel-planet" style={{ animationDelay: `${0.9 + i * 0.07}s` }}>
               <line x1={tick1.x} y1={tick1.y} x2={tick2.x} y2={tick2.y} stroke="rgba(233,236,248,0.3)" strokeWidth="1" />
+              <line x1={edge.x} y1={edge.y} x2={node.x} y2={node.y} stroke="rgba(233,236,248,0.22)" strokeWidth="1" />
+              <circle cx={node.x} cy={node.y} r="2.3" fill="rgba(233,236,248,0.8)" />
               <circle cx={pos.x} cy={pos.y} r="12.5" fill="#12151F" stroke={p.accent ? "url(#wheelGrad)" : "rgba(233,236,248,0.2)"} strokeWidth="1" />
               <text
                 x={pos.x}

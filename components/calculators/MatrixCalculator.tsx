@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { arcanaByNumber, calcMatrix, type MatrixResult } from "@/lib/arcana";
 import CTA from "@/components/CTA";
 
 export default function MatrixCalculator() {
   const [date, setDate] = useState("1995-06-15");
+  const resultRef = useRef<HTMLDivElement | null>(null);
   const [result, setResult] = useState<MatrixResult | null>(null);
+
+  useEffect(() => {
+    if (!result || !resultRef.current) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultRef.current.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }, [result]);
   const [error, setError] = useState("");
 
   function build() {
@@ -50,7 +57,7 @@ export default function MatrixCalculator() {
         {error && <p className="mt-4 text-sm text-stellar">{error}</p>}
 
         {result && day && core && (
-          <div className="mt-10 border-t border-hairline pt-10" key={date}>
+          <div ref={resultRef} className="mt-10 scroll-mt-24 border-t border-hairline pt-10" key={date}>
             {/* Открытые энергии: личный аркан и аркан судьбы */}
             <div className="grid gap-4 md:grid-cols-2">
               <div className="card-flip rounded-2xl border border-iris/30 bg-void/60 p-6" style={{ animationDelay: "0ms" }}>

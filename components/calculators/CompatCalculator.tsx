@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SIGNS } from "@/lib/zodiac";
 import { calcCompat, canonicalPair, type CompatResult } from "@/lib/compat";
@@ -9,7 +9,14 @@ import CTA from "@/components/CTA";
 export default function CompatCalculator() {
   const [a, setA] = useState("leo");
   const [b, setB] = useState("libra");
+  const resultRef = useRef<HTMLDivElement | null>(null);
   const [result, setResult] = useState<CompatResult | null>(null);
+
+  useEffect(() => {
+    if (!result || !resultRef.current) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultRef.current.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }, [result]);
 
   function build() {
     setResult(calcCompat(a, b));
@@ -58,7 +65,7 @@ export default function CompatCalculator() {
         </button>
 
         {result && (
-          <div className="mt-10 border-t border-hairline pt-10" key={`${a}-${b}`}>
+          <div ref={resultRef} className="mt-10 scroll-mt-24 border-t border-hairline pt-10" key={`${a}-${b}`}>
             <div className="flex flex-col items-start gap-6 md:flex-row md:items-center">
               <div className="card-flip flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-iris/40 bg-void/60">
                 <span className="font-display text-3xl grad-text">{result.score}%</span>

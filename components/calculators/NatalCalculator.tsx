@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CITIES } from "@/lib/cities";
 import { calcNatal, type NatalResult } from "@/lib/natal";
 import NatalWheel from "@/components/NatalWheel";
@@ -12,7 +12,14 @@ export default function NatalCalculator() {
   const [timeKnown, setTimeKnown] = useState(true);
   const [cityIdx, setCityIdx] = useState(0);
   const [tz, setTz] = useState(String(CITIES[0].tz));
+  const resultRef = useRef<HTMLDivElement | null>(null);
   const [result, setResult] = useState<NatalResult | null>(null);
+
+  useEffect(() => {
+    if (!result || !resultRef.current) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultRef.current.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }, [result]);
   const [error, setError] = useState("");
 
   const city = CITIES[cityIdx];
@@ -117,7 +124,7 @@ export default function NatalCalculator() {
         </button>
 
         {result && (
-          <div className="mt-10 border-t border-hairline pt-10" key={JSON.stringify(result.sun.lon)}>
+          <div ref={resultRef} className="mt-10 scroll-mt-24 border-t border-hairline pt-10" key={JSON.stringify(result.sun.lon)}>
             <div className="grid items-center gap-8 lg:grid-cols-2">
               <div className="flex justify-center">
                 <NatalWheel
