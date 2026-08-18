@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Unbounded Variable", system-ui, sans-serif;
+  --font-body: "Manrope Variable", system-ui, sans-serif;
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-inout-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html {
+  /* smooth намеренно выключен: с App Router даёт «приземление» внизу страницы при переходах */
+  scroll-behavior: auto;
+}
+
+body {
+  @apply bg-void text-ink font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(142, 123, 255, 0.13), transparent),
+    radial-gradient(ellipse 50% 40% at 85% 20%, rgba(239, 194, 107, 0.05), transparent);
+  background-repeat: no-repeat;
+}
+
+::selection {
+  background: rgba(142, 123, 255, 0.35);
+}
+
+/* ---------- Star texture (fixed, non-scrolling, pointer-through) ---------- */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(233, 236, 248, 0.5), transparent 55%),
+    radial-gradient(1px 1px at 78% 12%, rgba(233, 236, 248, 0.35), transparent 55%),
+    radial-gradient(1.5px 1.5px at 34% 64%, rgba(239, 194, 107, 0.35), transparent 55%),
+    radial-gradient(1px 1px at 62% 42%, rgba(233, 236, 248, 0.4), transparent 55%),
+    radial-gradient(1px 1px at 88% 74%, rgba(233, 236, 248, 0.3), transparent 55%),
+    radial-gradient(1.5px 1.5px at 8% 86%, rgba(142, 123, 255, 0.3), transparent 55%),
+    radial-gradient(1px 1px at 46% 8%, rgba(233, 236, 248, 0.35), transparent 55%),
+    radial-gradient(1px 1px at 96% 38%, rgba(233, 236, 248, 0.25), transparent 55%),
+    radial-gradient(1px 1px at 22% 44%, rgba(233, 236, 248, 0.22), transparent 55%),
+    radial-gradient(1.5px 1.5px at 68% 90%, rgba(233, 236, 248, 0.3), transparent 55%);
+}
+
+/* ---------- Double-bezel card architecture ---------- */
+.shell {
+  @apply rounded-shell border border-hairline bg-white/[0.03] p-1.5;
+}
+.core {
+  @apply rounded-core bg-surface;
+  box-shadow: inset 0 1px 1px rgba(233, 236, 248, 0.06);
+}
+
+/* ---------- Accent gradient (the one) ---------- */
+.grad-text {
+  background: linear-gradient(100deg, #8e7bff 10%, #efc26b 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.grad-line {
+  background: linear-gradient(90deg, rgba(142, 123, 255, 0.9), rgba(239, 194, 107, 0.9));
+}
+
+/* ---------- Eyebrow ---------- */
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border border-hairline bg-white/[0.04] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-muted;
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s var(--ease-out-strong),
+    transform 0.8s var(--ease-out-strong);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Natal wheel draw-in ---------- */
+@keyframes wheel-ring {
+  from { stroke-dashoffset: var(--dash); }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes wheel-pop {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes wheel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.wheel-ring {
+  stroke-dasharray: var(--dash);
+  stroke-dashoffset: var(--dash);
+  animation: wheel-ring 1.2s var(--ease-out-strong) forwards;
+}
+.wheel-house {
+  opacity: 0;
+  animation: wheel-pop 0.5s var(--ease-out-strong) forwards;
+}
+.wheel-planet {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: wheel-pop 0.6s var(--ease-out-strong) forwards;
+}
+.wheel-slow-spin {
+  transform-origin: center;
+  animation: wheel-spin 240s linear infinite;
+}
+
+/* ---------- Matrix card flip ---------- */
+@keyframes card-flip-in {
+  from { opacity: 0; transform: rotateY(70deg) scale(0.94); }
+  to { opacity: 1; transform: rotateY(0deg) scale(1); }
+}
+.card-flip {
+  animation: card-flip-in 0.7s var(--ease-out-strong) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+  .wheel-ring {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .wheel-house,
+  .wheel-planet {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .wheel-slow-spin { animation: none; }
+  .card-flip { animation: none; opacity: 1; }
+}
+
+/* iOS: нативные date/time-инпуты имеют внутреннюю мин-ширину и вылезают из карточек */
+input,
+select,
+textarea {
+  min-width: 0;
+}
+input[type="date"],
+input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 3.1rem;
+}
+input[type="date"]::-webkit-date-and-time-value,
+input[type="time"]::-webkit-date-and-time-value {
+  text-align: left;
+}
