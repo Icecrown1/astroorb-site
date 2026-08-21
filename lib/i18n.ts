@@ -32,6 +32,10 @@ export const UI = {
       about: "О проекте",
       allSigns: "Все знаки",
     },
+    share: {
+      button: "Поделиться результатом",
+      copied: "Ссылка скопирована — отправьте её в любой чат",
+    },
     faqTitle: "Частые вопросы",
     breadcrumbsHome: "Главная",
     calc: {
@@ -80,6 +84,10 @@ export const UI = {
       pricing: "Pricing",
       about: "About",
       allSigns: "All signs",
+    },
+    share: {
+      button: "Share result",
+      copied: "Link copied — paste it into any chat",
     },
     faqTitle: "FAQ",
     breadcrumbsHome: "Home",

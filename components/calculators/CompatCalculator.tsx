@@ -5,12 +5,15 @@ import Link from "next/link";
 import { SIGNS } from "@/lib/zodiac";
 import { calcCompat, canonicalPair, type CompatResult } from "@/lib/compat";
 import CTA from "@/components/CTA";
+import ShareButton from "@/components/ShareButton";
 import { ctaPage, localePath, type Locale } from "@/lib/i18n";
 
 export default function CompatCalculator({ locale = "ru" }: { locale?: Locale }) {
   const [a, setA] = useState("leo");
   const [b, setB] = useState("libra");
   const resultRef = useRef<HTMLDivElement | null>(null);
+  const [nameA, setNameA] = useState("");
+  const [nameB, setNameB] = useState("");
   const [result, setResult] = useState<CompatResult | null>(null);
 
   useEffect(() => {
@@ -63,6 +66,35 @@ export default function CompatCalculator({ locale = "ru" }: { locale?: Locale })
           </label>
         </div>
 
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <label className="block">
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">
+              {locale === "en" ? "Your name (optional)" : "Ваше имя (необязательно)"}
+            </span>
+            <input
+              type="text"
+              value={nameA}
+              maxLength={20}
+              onChange={(e) => setNameA(e.target.value)}
+              placeholder={locale === "en" ? "Anna" : "Аня"}
+              className="mt-2 w-full rounded-xl border border-hairline bg-void px-4 py-3 text-ink outline-none transition-colors duration-200 focus:border-iris/60"
+            />
+          </label>
+          <label className="block">
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">
+              {locale === "en" ? "Partner's name (optional)" : "Имя партнёра (необязательно)"}
+            </span>
+            <input
+              type="text"
+              value={nameB}
+              maxLength={20}
+              onChange={(e) => setNameB(e.target.value)}
+              placeholder={locale === "en" ? "Dan" : "Дима"}
+              className="mt-2 w-full rounded-xl border border-hairline bg-void px-4 py-3 text-ink outline-none transition-colors duration-200 focus:border-iris/60"
+            />
+          </label>
+        </div>
+
         <button
           onClick={build}
           className="mt-6 w-full rounded-full bg-iris px-6 py-3.5 font-semibold text-void transition-[transform,box-shadow] duration-300 ease-out-strong hover:shadow-[0_8px_40px_-8px_rgba(142,123,255,0.55)] active:scale-[0.98] sm:w-auto"
@@ -102,6 +134,14 @@ export default function CompatCalculator({ locale = "ru" }: { locale?: Locale })
                 </p>
                 <CTA page={ctaPage(locale, "compatibility")} cta="result_unlock">{T.open}</CTA>
               </div>
+            </div>
+
+            <div className="mt-5 flex justify-center">
+              <ShareButton
+                type="compat"
+                locale={locale}
+                url={`/share/compat?pair=${canonicalPair(a, b)}&l=${locale}${nameA.trim() ? `&a=${encodeURIComponent(nameA.trim())}` : ""}${nameB.trim() ? `&b=${encodeURIComponent(nameB.trim())}` : ""}`}
+              />
             </div>
           </div>
         )}

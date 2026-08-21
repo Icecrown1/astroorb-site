@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { arcanaByNumber, calcMatrix, type MatrixResult } from "@/lib/arcana";
 import CTA from "@/components/CTA";
+import ShareButton from "@/components/ShareButton";
 import { ctaPage, localePath, type Locale } from "@/lib/i18n";
 
 export default function MatrixCalculator({ locale = "ru" }: { locale?: Locale }) {
   const [date, setDate] = useState("1995-06-15");
   const resultRef = useRef<HTMLDivElement | null>(null);
+  const [name, setName] = useState("");
   const [result, setResult] = useState<MatrixResult | null>(null);
 
   useEffect(() => {
@@ -52,6 +54,19 @@ export default function MatrixCalculator({ locale = "ru" }: { locale?: Locale })
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
+              className="mt-2 w-full rounded-xl border border-hairline bg-void px-4 py-3 text-ink outline-none transition-colors duration-200 focus:border-iris/60"
+            />
+          </label>
+          <label className="block flex-1">
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">
+              {locale === "en" ? "Name (optional)" : "Имя (необязательно)"}
+            </span>
+            <input
+              type="text"
+              value={name}
+              maxLength={20}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={locale === "en" ? "Anna" : "Аня"}
               className="mt-2 w-full rounded-xl border border-hairline bg-void px-4 py-3 text-ink outline-none transition-colors duration-200 focus:border-iris/60"
             />
           </label>
@@ -114,6 +129,14 @@ export default function MatrixCalculator({ locale = "ru" }: { locale?: Locale })
                 </p>
                 <CTA page={ctaPage(locale, "matrix")} cta="result_unlock">{T.open}</CTA>
               </div>
+            </div>
+
+            <div className="mt-5 flex justify-center">
+              <ShareButton
+                type="matrix"
+                locale={locale}
+                url={`/share/matrix?arcana=${core.slug}&l=${locale}${name.trim() ? `&name=${encodeURIComponent(name.trim())}` : ""}`}
+              />
             </div>
           </div>
         )}

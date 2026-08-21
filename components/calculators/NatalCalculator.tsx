@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { CITIES } from "@/lib/cities";
 import { calcNatal, type NatalResult } from "@/lib/natal";
 import { composeNatalSummary } from "@/lib/interpret";
+import ShareButton from "@/components/ShareButton";
 import { UI, ctaPage, type Locale } from "@/lib/i18n";
 import NatalWheel from "@/components/NatalWheel";
 import CTA from "@/components/CTA";
@@ -207,6 +208,14 @@ export default function NatalCalculator({ locale = "ru" }: { locale?: Locale }) 
                 </p>
                 <CTA page={ctaPage(locale, "natal-chart")} cta="result_unlock">{t.unlockCta}</CTA>
               </div>
+            </div>
+
+            <div className="mt-5 flex justify-center">
+              <ShareButton
+                type="natal"
+                locale={locale}
+                url={`/share/natal?sun=${result.sun.sign.slug}&moon=${result.moon.sign.slug}${result.ascendant ? `&asc=${result.ascendant.sign.slug}` : ""}&l=${locale}`}
+              />
             </div>
           </div>
         )}
