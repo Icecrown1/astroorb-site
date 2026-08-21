@@ -20,3 +20,15 @@ export function trackCta(page: string, cta: string) {
     /* аналитика не должна ломать переход */
   }
 }
+
+/** Произвольная цель (например lead_submit) в обе системы. */
+export function trackGoal(goal: string, params?: Record<string, unknown>) {
+  try {
+    const ymId = process.env.NEXT_PUBLIC_YM_ID;
+    const w = window as any;
+    if (ymId && typeof w.ym === "function") w.ym(Number(ymId), "reachGoal", goal, params);
+    if (typeof w.gtag === "function") w.gtag("event", goal, params);
+  } catch {
+    /* noop */
+  }
+}

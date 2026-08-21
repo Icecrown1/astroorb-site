@@ -3,6 +3,7 @@ import Link from "next/link";
 import NatalWheel from "@/components/NatalWheel";
 import Reveal from "@/components/Reveal";
 import CTA from "@/components/CTA";
+import LeadForm from "@/components/LeadForm";
 import FAQ from "@/components/FAQ";
 import { deepLink } from "@/lib/site";
 
@@ -233,6 +234,25 @@ export default function HomePage() {
                 </tbody>
               </table>
             </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Лид-магнит: персональный разбор месяца */}
+      <section id="lead" className="mx-auto max-w-4xl px-4 py-24">
+        <Reveal>
+          <p className="eyebrow text-center">Бесплатный разбор</p>
+          <h2 className="mt-4 text-center font-display text-3xl md:text-4xl">
+            Ваш <span className="grad-text">прогноз на месяц</span> — за минуту
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-center text-muted">
+            По вашей дате рождения построим карту, наложим транзиты месяца — и AI напишет персональный
+            разбор: деньги, карьера, отношения. Прямо на этой странице.
+          </p>
+        </Reveal>
+        <Reveal delay={100}>
+          <div className="mt-10">
+            <LeadForm />
           </div>
         </Reveal>
       </section>
