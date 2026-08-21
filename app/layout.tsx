@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import ScrollToTop from "@/components/ScrollToTop";
+import Analytics from "@/components/Analytics";
 import Footer from "@/components/Footer";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 // Self-hosted шрифты (Fontsource, variable, cyrillic+latin) — без запросов к Google Fonts
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <div className="starfield" aria-hidden />
+        <Analytics />
         <ScrollToTop />
         <Nav />
         <main className="relative z-10">{children}</main>

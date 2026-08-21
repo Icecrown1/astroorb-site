@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { deepLink } from "@/lib/site";
+import { trackCta } from "@/lib/track";
 
 const LINKS = [
   { href: "/natal-chart", label: "Натальная карта" },
@@ -43,6 +44,7 @@ export default function Nav() {
           <div className="flex items-center gap-2">
             <a
               href={deepLink("nav", "open")}
+              onClick={() => trackCta("nav", "open")}
               className="hidden rounded-full bg-iris px-4 py-1.5 text-[13px] font-semibold text-void transition-transform duration-200 ease-out-strong active:scale-[0.97] sm:block"
             >
               Открыть в Telegram
@@ -91,6 +93,7 @@ export default function Nav() {
           ))}
           <a
             href={deepLink("nav", "mobile_menu")}
+            onClick={() => trackCta("nav", "mobile_menu")}
             className={`mt-8 inline-flex w-max items-center gap-3 rounded-full bg-iris px-6 py-3 font-semibold text-void transition-[opacity,transform] duration-500 ease-out-strong ${
               open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
