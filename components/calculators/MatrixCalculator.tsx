@@ -36,7 +36,7 @@ export default function MatrixCalculator({ locale = "ru" }: { locale?: Locale })
 
   const T = locale === "en"
     ? { date: "Date of birth", calc: "Calculate matrix", personal: "Personal arcana · energy", destiny: "Destiny arcana · energy", full: "Full meaning of", locked: "3 more positions are calculated: family line, karma, money. The full reading of all your matrix energies is in Astro Orb", open: "Unlock all energies", errDate: "Please enter your date of birth.", errYear: "Check the date: year must be 1900–2100." }
-    : { date: "Дата рождения", calc: "Рассчитать матрицу", personal: "Личный аркан · энергия", destiny: "Аркан судьбы · энергия", full: "Полное значение аркана", locked: "{T.locked}", open: "Открыть все энергии", errDate: "Укажите дату рождения.", errYear: "Проверьте дату: год от 1900 до 2100." };
+    : { date: "Дата рождения", calc: "Рассчитать матрицу", personal: "Личный аркан · энергия", destiny: "Аркан судьбы · энергия", full: "Полное значение аркана", locked: "Рассчитаны ещё 3 позиции: линия рода, карма, деньги. Полный разбор всех энергий матрицы — в Astro Orb", open: "Открыть все энергии", errDate: "Укажите дату рождения.", errYear: "Проверьте дату: год от 1900 до 2100." };
   const aName = (a: { ru: string; en: { name: string } }) => (locale === "en" ? a.en.name : a.ru);
   const aKeyword = (a: { keyword: string; en: { keyword: string } }) => (locale === "en" ? a.en.keyword : a.keyword);
   const aPlus = (a: { plus: string; en: { plus: string } }) => (locale === "en" ? a.en.plus : a.plus);

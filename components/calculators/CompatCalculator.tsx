@@ -24,7 +24,7 @@ export default function CompatCalculator({ locale = "ru" }: { locale?: Locale })
 
   const T = locale === "en"
     ? { first: "First sign", second: "Second sign", check: "Check compatibility", pair: "Detailed pair page →", teaser1: (x: string, y: string) => `Love & passion: how ${x} and ${y} express feelings…`, teaser2: "Money & everyday life: who anchors stability in the pair…", teaser3: "Crisis points: three situations where the pair is at risk…", locked: "This is a general sign-based estimate. The precise synastry from two full birth charts is in Astro Orb", open: "Reading from your charts" }
-    : { first: "Первый знак", second: "Второй знак", check: "Проверить совместимость", pair: "{T.pair}", teaser1: (x: string, y: string) => `Любовь и страсть: как ${x} и ${y} проявляют чувства…`, teaser2: "Деньги и быт: кто в паре отвечает за стабильность…", teaser3: "Кризисные точки: три ситуации, в которых пара рискует…", locked: "{T.locked}", open: "Разбор по вашим картам" };
+    : { first: "Первый знак", second: "Второй знак", check: "Проверить совместимость", pair: "Подробная страница пары →", teaser1: (x: string, y: string) => `Любовь и страсть: как ${x} и ${y} проявляют чувства…`, teaser2: "Деньги и быт: кто в паре отвечает за стабильность…", teaser3: "Кризисные точки: три ситуации, в которых пара рискует…", locked: "Это общая оценка по знакам. Точная синастрия по двум полным натальным картам — в Astro Orb", open: "Разбор по вашим картам" };
   const sN = (x: { ru: string; en: { name: string } }) => (locale === "en" ? x.en.name : x.ru);
 
   function build() {
