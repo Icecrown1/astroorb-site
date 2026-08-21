@@ -23,7 +23,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">Инструменты</p>
+          <h2 className="text-xs uppercase tracking-[0.2em] text-muted">Инструменты</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link className="text-ink/80 hover:text-ink" href="/natal-chart">Натальная карта онлайн</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href="/matrix">Матрица судьбы</Link></li>
@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">Гороскопы</p>
+          <h2 className="text-xs uppercase tracking-[0.2em] text-muted">Гороскопы</h2>
           <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
             {SIGNS.map((s) => (
               <li key={s.slug}>
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">Astro Orb</p>
+          <h2 className="text-xs uppercase tracking-[0.2em] text-muted">Astro Orb</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link className="text-ink/80 hover:text-ink" href="/pricing">Тарифы</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href="/about">О проекте и технологии</Link></li>

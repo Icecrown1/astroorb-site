@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CTA from "@/components/CTA";
@@ -7,8 +8,9 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "О проекте: технология, точность, методология",
   description:
-    "Как устроен Astro Orb: расчёты Swiss Ephemeris по эфемеридам NASA JPL, AI-интерпретации, честная оплата с чеками 54-ФЗ. Технология и методология сервиса.",
+    "Расчёты Swiss Ephemeris по эфемеридам NASA JPL, AI-интерпретации, честная оплата. Технология и методология Astro Orb.",
   alternates: { canonical: "/about" },
+  openGraph: pageOg("/about"),
 };
 
 export default function AboutPage() {

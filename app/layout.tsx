@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     default: "Натальная карта с точностью NASA — AI-астролог Astro Orb в Telegram",
     template: `%s — ${SITE_NAME}`,
   },
+  openGraph: {
+    siteName: SITE_NAME,
+    type: "website",
+    locale: "ru_RU",
+    url: "/",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Astro Orb — AI-астролог в Telegram" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og.png"] },
   description:
     "Персональный AI-астролог в Telegram: натальная карта по Swiss Ephemeris, матрица судьбы, совместимость и гороскопы. Бесплатный расчёт за 2 минуты, без установки приложения.",
-  openGraph: {
-    type: "website",
-    siteName: SITE_NAME,
-    locale: "ru_RU",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
   alternates: {
     canonical: "/",
   },
@@ -46,6 +46,27 @@ const appJsonLd = {
   },
 };
 
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      inLanguage: "ru-RU",
+      publisher: { "@id": `${SITE_URL}/#org` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#org`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/og.png` },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
@@ -53,6 +74,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <div className="starfield" aria-hidden />
         <ScrollToTop />

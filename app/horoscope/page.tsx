@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Reveal from "@/components/Reveal";
@@ -9,8 +10,9 @@ import { SIGNS } from "@/lib/zodiac";
 export const metadata: Metadata = {
   title: "Гороскоп на сегодня для всех знаков зодиака",
   description:
-    "Бесплатный гороскоп на сегодня, завтра, неделю и месяц для всех 12 знаков зодиака. Обновляется ежедневно. Личный гороскоп по вашей натальной карте — в Astro Orb.",
+    "Гороскоп на сегодня и завтра для всех 12 знаков. Обновляется ежедневно. Личный прогноз по вашей натальной карте — в Astro Orb.",
   alternates: { canonical: "/horoscope" },
+  openGraph: pageOg("/horoscope"),
 };
 
 const FAQ_ITEMS = [
@@ -39,7 +41,7 @@ export default function HoroscopeHub() {
                 href={`/horoscope/${s.slug}`}
                 className="group flex items-center gap-4 rounded-2xl border border-hairline bg-surface p-5 transition-[border-color,transform] duration-300 ease-out-strong hover:-translate-y-0.5 hover:border-iris/40"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-lg text-stellar">
+                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-lg text-stellar">
                   {s.symbol}
                 </span>
                 <span>

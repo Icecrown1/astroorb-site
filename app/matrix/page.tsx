@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MatrixCalculator from "@/components/calculators/MatrixCalculator";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "Рассчитайте матрицу судьбы по дате рождения бесплатно: личный аркан, аркан судьбы и ключевые энергии. Онлайн-калькулятор + расшифровка всех 22 арканов.",
   alternates: { canonical: "/matrix" },
+  openGraph: pageOg("/matrix"),
 };
 
 const FAQ_ITEMS = [

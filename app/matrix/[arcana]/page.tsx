@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -17,6 +18,7 @@ export function generateMetadata({ params }: { params: { arcana: string } }): Me
     title: `Аркан ${a.n} «${a.ru}» в матрице судьбы — значение`,
     description: `Аркан ${a.n} (${a.ru}) в матрице судьбы: ${a.keyword}. Проявление в плюсе и минусе, задача энергии и как перевести её в ресурс.`,
     alternates: { canonical: `/matrix/${a.slug}` },
+    openGraph: pageOg(`/matrix/${a.slug}`),
   };
 }
 

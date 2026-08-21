@@ -24,3 +24,14 @@ export const PRICING = {
   standard: { m1: 199, m6: 159, m12: 99, orbs: 250 },
   premium: { m1: 399, m6: 359, m12: 179, orbs: 550 },
 } as const;
+
+/** OG-блок страницы: url обязателен для корректного шеринга (og:url). */
+export function pageOg(path: string) {
+  return {
+    url: path,
+    siteName: SITE_NAME,
+    type: "website" as const,
+    locale: "ru_RU",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Astro Orb — AI-астролог в Telegram" }],
+  };
+}

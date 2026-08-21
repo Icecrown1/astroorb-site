@@ -161,3 +161,10 @@ input[type="date"]::-webkit-date-and-time-value,
 input[type="time"]::-webkit-date-and-time-value {
   text-align: left;
 }
+
+/* Доступность: заметный фокус для клавиатуры (контраст ≥3:1 на тёмном фоне) */
+:focus-visible {
+  outline: 2px solid #8e7bff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}

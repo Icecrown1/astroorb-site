@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -8,7 +9,7 @@ import { SIGNS, ELEMENT_RU, signBySlug } from "@/lib/zodiac";
 import { composeHoroscope, getDayHoroscope } from "@/lib/horoscope";
 
 /** ISR: перегенерация раз в сутки (ТЗ §2 — обновление в 00:05 МСК задаётся кроном/refresh-запросом). */
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return SIGNS.map((s) => ({ sign: s.slug }));
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: { params: { sign: string } }): Meta
   });
   return {
     title: `Гороскоп ${s.ru} на ${dateRu} — сегодня и завтра`,
-    description: `Гороскоп ${s.ruGen} на сегодня, ${dateRu}: работа, отношения, самочувствие и совет дня. Обновляется ежедневно. Личный прогноз по натальной карте — в Astro Orb.`,
+    description: `Гороскоп ${s.ruGen} на сегодня, ${dateRu}: работа, отношения, самочувствие, совет дня. Личный прогноз по карте — в Astro Orb.`,
     alternates: { canonical: `/horoscope/${s.slug}` },
+    openGraph: pageOg(`/horoscope/${s.slug}`),
   };
 }
 
@@ -46,8 +48,21 @@ export default async function SignHoroscopePage({ params }: { params: { sign: st
     { q: "Когда обновляется прогноз?", a: "Каждую ночь по московскому времени. Прогнозы на завтра, неделю и месяц доступны в Astro Orb вместе с личными транзитами." },
   ];
 
+  const nowMsk = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Moscow" });
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `Гороскоп ${s.ruGen} на ${today.dateRu}`,
+    datePublished: nowMsk,
+    dateModified: nowMsk,
+    inLanguage: "ru-RU",
+    author: { "@type": "Organization", name: "Astro Orb" },
+    mainEntityOfPage: `/horoscope/${s.slug}`,
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <Breadcrumbs
         items={[
           { href: "/", label: "Главная" },

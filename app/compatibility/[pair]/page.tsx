@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -18,8 +19,9 @@ export function generateMetadata({ params }: { params: { pair: string } }): Meta
   if (!r) return {};
   return {
     title: `${r.a.ru} и ${r.b.ru} — совместимость знаков (${r.score}%)`,
-    description: `Совместимость ${r.a.ruGen} и ${r.b.ruGen}: ${r.score}% — ${r.headline.toLowerCase()}. Сильные стороны пары, точки трения и что покажет полная синастрия.`,
+    description: `Совместимость ${r.a.ruGen} и ${r.b.ruGen}: ${r.score}% — ${r.headline.toLowerCase()}. Сильные стороны, точки трения, синастрия.`,
     alternates: { canonical: `/compatibility/${params.pair}` },
+    openGraph: pageOg(`/compatibility/${params.pair}`),
   };
 }
 

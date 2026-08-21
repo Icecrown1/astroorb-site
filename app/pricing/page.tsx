@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQ from "@/components/FAQ";
 import PricingCards from "@/components/PricingCards";
 
 export const metadata: Metadata = {
-  title: "Тарифы Astro Orb — подписка от 99 ₽ в месяц",
+  title: "Тарифы: натальная карта бесплатно, подписка от 99 ₽/мес",
   description:
-    "Тарифы AI-астролога Astro Orb: Free — натальная карта бесплатно, Standard от 99 ₽/мес, Premium от 179 ₽/мес с соляром. Чеки 54-ФЗ, отмена в один клик.",
+    "Free — натальная карта бесплатно; Standard от 99 ₽/мес; Premium от 179 ₽/мес с соляром. Чеки 54-ФЗ, отмена в один клик.",
   alternates: { canonical: "/pricing" },
+  openGraph: pageOg("/pricing"),
 };
 
 const FAQ_ITEMS = [

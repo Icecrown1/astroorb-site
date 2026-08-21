@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CompatCalculator from "@/components/calculators/CompatCalculator";
@@ -11,8 +12,9 @@ import { canonicalPair } from "@/lib/compat";
 export const metadata: Metadata = {
   title: "Совместимость знаков зодиака по дате рождения",
   description:
-    "Проверьте совместимость знаков зодиака онлайн: процент, сильные стороны пары и точки трения. Бесплатный калькулятор + полный разбор синастрии по двум натальным картам.",
+    "Совместимость знаков зодиака онлайн: процент, сильные стороны пары и точки трения. Бесплатно + полная синастрия по двум картам.",
   alternates: { canonical: "/compatibility" },
+  openGraph: pageOg("/compatibility"),
 };
 
 const FAQ_ITEMS = [

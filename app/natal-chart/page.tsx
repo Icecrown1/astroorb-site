@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import NatalCalculator from "@/components/calculators/NatalCalculator";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   description:
     "Постройте натальную карту онлайн бесплатно: Солнце, Луна, асцендент и все планеты по дате рождения. Точный расчёт по эфемеридам NASA, расшифровка — от AI-астролога.",
   alternates: { canonical: "/natal-chart" },
+  openGraph: pageOg("/natal-chart"),
 };
 
 const FAQ_ITEMS = [

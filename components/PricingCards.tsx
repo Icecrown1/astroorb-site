@@ -28,6 +28,7 @@ export default function PricingCards() {
           {(Object.keys(PERIOD_LABEL) as Period[]).map((p) => (
             <button
               key={p}
+              aria-pressed={period === p}
               onClick={() => setPeriod(p)}
               className={`rounded-full px-5 py-2 text-sm transition-colors duration-200 ${
                 period === p ? "bg-iris font-semibold text-void" : "text-muted hover:text-ink"
@@ -114,8 +115,9 @@ export default function PricingCards() {
 function Li({ children, ok = false }: { children: React.ReactNode; ok?: boolean }) {
   return (
     <li className={`flex gap-2.5 ${ok ? "" : "text-muted/60 line-through decoration-hairline"}`}>
-      <span className={ok ? "text-stellar" : "text-muted/40"}>{ok ? "✦" : "—"}</span>
+      <span aria-hidden="true" className={ok ? "text-stellar" : "text-muted/40"}>{ok ? "✦" : "—"}</span>
       {children}
+      {!ok && <span className="sr-only"> — недоступно в этом тарифе</span>}
     </li>
   );
 }

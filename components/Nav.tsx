@@ -70,8 +70,9 @@ export default function Nav() {
 
       {/* Мобильное меню-оверлей */}
       <div
+        aria-hidden={!open}
         className={`fixed inset-0 z-30 bg-void/85 backdrop-blur-2xl transition-opacity duration-400 lg:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
+          open ? "opacity-100" : "invisible pointer-events-none opacity-0"
         }`}
       >
         <div className="flex h-full flex-col justify-center gap-1 px-8">

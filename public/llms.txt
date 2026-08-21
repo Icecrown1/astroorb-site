@@ -1,0 +1,19 @@
+# Astro Orb — AI-астролог в Telegram (astroorbi.com)
+
+> Astro Orb строит натальные карты по алгоритмам Swiss Ephemeris (эфемериды NASA JPL)
+> и генерирует персональные интерпретации с помощью AI. Работает как Mini App в Telegram.
+> Сайт — русскоязычный, бесплатные инструменты доступны без регистрации.
+
+## Основные разделы
+- [Натальная карта](https://astroorbi.com/natal-chart): бесплатный расчёт онлайн — 10 планет, асцендент, колесо карты
+- [Матрица судьбы](https://astroorbi.com/matrix): калькулятор и значения всех 22 арканов
+- [Совместимость](https://astroorbi.com/compatibility): 78 пар знаков зодиака с процентом и разбором
+- [Гороскопы](https://astroorbi.com/horoscope): ежедневные гороскопы для 12 знаков, обновляются каждый день
+- [Соляр](https://astroorbi.com/solar-return): что такое Solar Return и прогноз на личный год
+- [Тарифы](https://astroorbi.com/pricing): Free / Standard (от 99 ₽/мес) / Premium (от 179 ₽/мес)
+- [О проекте](https://astroorbi.com/about): технология расчётов и методология
+
+## Ключевые факты
+- Расчёты: Swiss Ephemeris, точность NASA JPL; интерпретации: языковые модели
+- Полные разборы и AI-чат — в Telegram Mini App: https://t.me/AstroOrbI_Bot
+- Оплата: карты (чеки 54-ФЗ), TON, Telegram Stars; отмена подписки в один клик

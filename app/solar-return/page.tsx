@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOg } from "@/lib/site";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQ from "@/components/FAQ";
@@ -8,8 +9,9 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Соляр — гороскоп на год от дня рождения",
   description:
-    "Что такое соляр (Solar Return) и как построить карту солнечного возвращения: прогноз на личный год по точному астрономическому моменту. Расчёт в Astro Orb Premium.",
+    "Соляр (Solar Return): прогноз на личный год по точному моменту возвращения Солнца. Как читается карта года и как построить свою.",
   alternates: { canonical: "/solar-return" },
+  openGraph: pageOg("/solar-return"),
 };
 
 const FAQ_ITEMS = [

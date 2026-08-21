@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  { title: "Натальная карта", text: "10 планет, дома, аспекты — и живой разбор, написанный под вас, а не шаблон.", cta: "features_natal", href: "/natal-chart" },
-  { title: "Совместимость", text: "Синастрия по двум полным картам: любовь, деньги, быт, кризисные точки.", cta: "features_compat", href: "/compatibility" },
-  { title: "Матрица судьбы", text: "22 аркана по дате рождения: предназначение, род, кармические задачи.", cta: "features_matrix", href: "/matrix" },
-  { title: "Соляр", text: "Прогноз на личный год от дня рождения до дня рождения — по точному моменту возвращения Солнца.", cta: "features_solar", href: "/solar-return" },
-  { title: "Важные даты", text: "Лунные фазы и транзиты, наложенные на дома вашей карты: когда действовать, когда ждать.", cta: "features_dates", href: "/horoscope" },
-  { title: "Oracle", text: "Задайте любой вопрос — AI ответит, опираясь на вашу карту, а не на общие слова.", cta: "features_oracle", href: "/about" },
+  { title: "Натальная карта", text: "10 планет, дома, аспекты — и живой разбор, написанный под вас, а не шаблон.", cta: "features_natal", href: "/natal-chart", anchor: "Подробнее о натальной карте" },
+  { title: "Совместимость", text: "Синастрия по двум полным картам: любовь, деньги, быт, кризисные точки.", cta: "features_compat", href: "/compatibility", anchor: "Подробнее о совместимости" },
+  { title: "Матрица судьбы", text: "22 аркана по дате рождения: предназначение, род, кармические задачи.", cta: "features_matrix", href: "/matrix", anchor: "Подробнее о матрице судьбы" },
+  { title: "Соляр", text: "Прогноз на личный год от дня рождения до дня рождения — по точному моменту возвращения Солнца.", cta: "features_solar", href: "/solar-return", anchor: "Подробнее о соляре" },
+  { title: "Важные даты", text: "Лунные фазы и транзиты, наложенные на дома вашей карты: когда действовать, когда ждать.", cta: "features_dates", href: "/horoscope", anchor: "Подробнее о гороскопах" },
+  { title: "Oracle", text: "Задайте любой вопрос — AI ответит, опираясь на вашу карту, а не на общие слова.", cta: "features_oracle", href: "/about", anchor: "Подробнее об Oracle" },
 ];
 
 const HOME_FAQ = [
@@ -158,7 +158,7 @@ export default function HomePage() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{f.text}</p>
                 <div className="mt-5 flex items-center justify-between">
                   <Link href={f.href} className="text-sm text-muted hover:text-ink">
-                    Подробнее
+                    {f.anchor}
                   </Link>
                   <a href={deepLink("home", f.cta)} className="text-sm text-iris hover:underline">
                     Попробовать ↗
