@@ -26,12 +26,20 @@ export const PRICING = {
 } as const;
 
 /** OG-блок страницы: url обязателен для корректного шеринга (og:url). */
-export function pageOg(path: string) {
+export function pageOg(path: string, locale: "ru" | "en" = "ru") {
+  const en = locale === "en";
   return {
     url: path,
     siteName: SITE_NAME,
     type: "website" as const,
-    locale: "ru_RU",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Astro Orb — AI-астролог в Telegram" }],
+    locale: en ? "en_US" : "ru_RU",
+    images: [
+      {
+        url: en ? "/og-en.png" : "/og.png",
+        width: 1200,
+        height: 630,
+        alt: en ? "Astro Orb — AI astrologer in Telegram" : "Astro Orb — AI-астролог в Telegram",
+      },
+    ],
   };
 }

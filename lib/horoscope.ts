@@ -1,4 +1,5 @@
 import { Sign } from "./zodiac";
+import type { Locale } from "./i18n";
 
 /**
  * Детерминированный генератор общего гороскопа (сид = дата + знак).
@@ -19,6 +20,48 @@ function hashSeed(str: string): number {
 function pick<T>(arr: T[], seed: number, salt: number): T {
   return arr[(seed + salt * 2654435761) % arr.length];
 }
+
+
+const OPENERS_EN = [
+  "The day opens a window for what you have been postponing — the key theme is",
+  "Planetary rhythms favor a calm, confident pace today; your leading note is",
+  "Today rewards those who act from their strengths — and your strength is",
+  "The general background is steady, with a pleasant accent on personal matters; the day's keyword is",
+  "A good day to close loose ends and clear space for the new; the theme is",
+  "Energy builds gradually today: the morning sets the tone, the evening pays it back; your focus is",
+];
+const WORK_EN = [
+  "At work, focus beats speed today: one finished task will do more for you than five started ones.",
+  "A good day for negotiations and messages that have been waiting — your wording lands precisely.",
+  "Routine goes unusually smoothly; use the freed attention for a step that has long needed courage.",
+  "Colleagues are more receptive than usual: voice the idea you have been keeping to yourself.",
+  "Money questions like concrete numbers today — check the figures before agreeing.",
+  "Postpone big commitments until tomorrow if you can; today favors preparation over signing.",
+];
+const LOVE_EN = [
+  "In relationships, warmth grows through small gestures — one honest compliment changes the evening.",
+  "A conversation you have been avoiding will go softer than you expect if you start it first.",
+  "Singles: someone from your existing circle sees you differently today — look around before looking far.",
+  "The pair's mood mirrors yours: bring the state you want to receive.",
+  "Give your loved ones the same patience you give strangers — the effect will surprise you.",
+  "An old chat or memory may resurface; respond from who you are now, not who you were then.",
+];
+const CARE_EN = [
+  "Your body asks for rhythm today: same-hour meals and an earlier night will restore more than any hack.",
+  "Tension collects in the shoulders and jaw — two minutes of slow breathing will reset the day.",
+  "Water and a walk beat caffeine after lunch; keep the evening screen-light.",
+  "Energy is uneven: plan the demanding work into your personal peak hours and keep the rest light.",
+  "A small digital pause works wonders today — even thirty offline minutes count.",
+  "Listen to the first signal of fatigue instead of the third; rest is part of the plan, not a failure of it.",
+];
+const ADVICE_EN = [
+  "Say yes only to what you would accept twice.",
+  "Done imperfectly today beats perfect someday.",
+  "Ask one question more than usual — the answer will save you a week.",
+  "Keep the promise you made to yourself first.",
+  "Choose the calm option where both look equal.",
+  "Write it down: today's passing thought is this week's plan.",
+];
 
 const OPENERS = [
   "День поддерживает вашу стихию:",
@@ -70,7 +113,7 @@ export interface DayHoroscope {
   lucky: number;
 }
 
-export function composeHoroscope(sign: Sign, date: Date, shift = 0): DayHoroscope {
+export function composeHoroscope(sign: Sign, date: Date, shift = 0, locale: Locale = "ru"): DayHoroscope {
   const d = new Date(date);
   d.setUTCDate(d.getUTCDate() + shift);
   const iso = d.toISOString().slice(0, 10);
@@ -83,6 +126,18 @@ export function composeHoroscope(sign: Sign, date: Date, shift = 0): DayHoroscop
     timeZone: "Europe/Moscow",
   });
 
+  if (locale === "en") {
+    const dateEn = d.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Moscow" });
+    return {
+      dateRu: dateEn,
+      intro: `${pick(OPENERS_EN, seed, 1)} ${sign.en.keyword}. ${sign.en.name} acts from a position of strength today — your ruler ${sign.en.ruler} is on your side.`,
+      work: pick(WORK_EN, seed, 2),
+      love: pick(LOVE_EN, seed, 3),
+      care: pick(CARE_EN, seed, 4),
+      advice: pick(ADVICE_EN, seed, 5),
+      lucky: (seed % 22) + 1,
+    };
+  }
   return {
     dateRu,
     intro: `${pick(OPENERS, seed, 1)} ${sign.keyword}. ${sign.ru} сегодня действует из сильной позиции — управитель ${sign.ruler} на вашей стороне.`,
@@ -100,8 +155,11 @@ export function composeHoroscope(sign: Sign, date: Date, shift = 0): DayHoroscop
  * берёт AI-гороскоп от GPT (кэш на бэкенде — 12 вызовов/день). Иначе или при ошибке —
  * детерминированный композер. Работает на сервере (SSG/ISR), CORS не нужен.
  */
-export async function getDayHoroscope(sign: Sign, date: Date, shift = 0): Promise<DayHoroscope> {
-  const fallback = composeHoroscope(sign, date, shift);
+export async function getDayHoroscope(sign: Sign, date: Date, shift = 0, locale: Locale = "ru"): Promise<DayHoroscope> {
+  const fallback = composeHoroscope(sign, date, shift, locale);
+
+  // Бэкенд пока пишет гороскопы только на русском — EN живёт на композере.
+  if (locale === "en") return fallback;
   const api = process.env.HOROSCOPE_API_URL;
 
   // Бэкенд генерирует только «сегодня»; «завтра» всегда из композера.

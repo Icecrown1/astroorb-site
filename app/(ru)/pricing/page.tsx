@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Тарифы: натальная карта бесплатно, подписка от 99 ₽/мес",
   description:
     "Free — натальная карта бесплатно; Standard от 99 ₽/мес; Premium от 179 ₽/мес с соляром. Чеки 54-ФЗ, отмена в один клик.",
-  alternates: { canonical: "/pricing" },
+  alternates: { canonical: "/pricing", languages: { ru: "/pricing", en: "/en/pricing", "x-default": "/pricing" } },
   openGraph: pageOg("/pricing"),
 };
 

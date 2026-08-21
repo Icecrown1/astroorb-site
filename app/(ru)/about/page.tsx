@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "О проекте: технология, точность, методология",
   description:
     "Расчёты Swiss Ephemeris по эфемеридам NASA JPL, AI-интерпретации, честная оплата. Технология и методология Astro Orb.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about", languages: { ru: "/about", en: "/en/about", "x-default": "/about" } },
   openGraph: pageOg("/about"),
 };
 

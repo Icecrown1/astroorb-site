@@ -4,16 +4,22 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { CITIES } from "@/lib/cities";
 import { calcNatal, type NatalResult } from "@/lib/natal";
 import { composeNatalSummary } from "@/lib/interpret";
+import { UI, ctaPage, type Locale } from "@/lib/i18n";
 import NatalWheel from "@/components/NatalWheel";
 import CTA from "@/components/CTA";
 
-export default function NatalCalculator() {
+export default function NatalCalculator({ locale = "ru" }: { locale?: Locale }) {
   const [date, setDate] = useState("1995-06-15");
   const [time, setTime] = useState("12:30");
   const [timeKnown, setTimeKnown] = useState(true);
   const [cityIdx, setCityIdx] = useState(0);
   const [tz, setTz] = useState(String(CITIES[0].tz));
   const resultRef = useRef<HTMLDivElement | null>(null);
+  const t = UI[locale].calc;
+  const sName = (x: { ru: string; en: { name: string } }) => (locale === "en" ? x.en.name : x.ru);
+  const ERR = locale === "en"
+    ? { date: "Please enter your date of birth.", tz: "Enter the time zone as a number from −12 to +14 (e.g. 3).", calc: "Could not calculate the chart for this date. Please check the data." }
+    : { date: "Укажите дату рождения.", tz: "Часовой пояс укажите числом от −12 до +14 (например, 3).", calc: "Не удалось рассчитать карту для этой даты. Проверьте данные." };
   const [result, setResult] = useState<NatalResult | null>(null);
 
   useEffect(() => {
@@ -37,18 +43,18 @@ export default function NatalCalculator() {
   function build() {
     setError("");
     if (!date) {
-      setError("Укажите дату рождения.");
+      setError(ERR.date);
       return;
     }
     const tzNum = Number(tz.replace(",", "."));
     if (Number.isNaN(tzNum) || tzNum < -12 || tzNum > 14) {
-      setError("Часовой пояс укажите числом от −12 до +14 (например, 3).");
+      setError(ERR.tz);
       return;
     }
     try {
       setResult(calcNatal(date, time || "12:00", tzNum, city.lat, city.lon, timeKnown));
     } catch {
-      setError("Не удалось рассчитать карту для этой даты. Проверьте данные.");
+      setError(ERR.calc);
     }
   }
 
@@ -57,7 +63,7 @@ export default function NatalCalculator() {
       <div className="core p-6 md:p-10">
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block">
-            <span className="text-xs uppercase tracking-[0.18em] text-muted">Дата рождения</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">{t.birthDate}</span>
             <input
               type="date"
               value={date}
@@ -66,7 +72,7 @@ export default function NatalCalculator() {
             />
           </label>
           <label className="block">
-            <span className="text-xs uppercase tracking-[0.18em] text-muted">Время рождения</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">{t.birthTime}</span>
             <input
               type="time"
               value={time}
@@ -76,7 +82,7 @@ export default function NatalCalculator() {
             />
           </label>
           <label className="block">
-            <span className="text-xs uppercase tracking-[0.18em] text-muted">Город рождения</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">{t.city}</span>
             <select
               value={cityIdx}
               onChange={(e) => {
@@ -87,14 +93,14 @@ export default function NatalCalculator() {
               className="mt-2 w-full rounded-xl border border-hairline bg-void px-4 py-3 text-ink outline-none transition-colors duration-200 focus:border-iris/60"
             >
               {CITIES.map((c, i) => (
-                <option key={c.name} value={i}>
-                  {c.name}
+                <option key={locale === "en" ? c.en : c.name} value={i}>
+                  {locale === "en" ? c.en : c.name}
                 </option>
               ))}
             </select>
           </label>
           <label className="block">
-            <span className="text-xs uppercase tracking-[0.18em] text-muted">Часовой пояс (UTC±)</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">{t.tz}</span>
             <input
               type="text"
               inputMode="numeric"
@@ -112,7 +118,7 @@ export default function NatalCalculator() {
             onChange={(e) => setTimeKnown(!e.target.checked)}
             className="h-4 w-4 accent-iris"
           />
-          Не знаю время рождения (асцендент не рассчитывается)
+          {t.noTime}
         </label>
 
         {error && <p className="mt-4 text-sm text-stellar">{error}</p>}
@@ -121,7 +127,7 @@ export default function NatalCalculator() {
           onClick={build}
           className="mt-6 w-full rounded-full bg-iris px-6 py-3.5 font-semibold text-void transition-[transform,box-shadow] duration-300 ease-out-strong hover:shadow-[0_8px_40px_-8px_rgba(142,123,255,0.55)] active:scale-[0.98] md:w-auto"
         >
-          Построить карту бесплатно
+          {t.build}
         </button>
 
         {result && (
@@ -136,26 +142,26 @@ export default function NatalCalculator() {
               </div>
               <div className="space-y-4">
                 <ResultCard
-                  label="Солнце — ядро личности"
-                  value={`${result.sun.sign.symbol} ${result.sun.sign.ru}`}
-                  detail={`${result.sun.degInSign.toFixed(1)}° · ${result.sun.sign.traits.join(", ")}`}
+                  label={t.sunLabel}
+                  value={`${result.sun.sign.symbol} ${sName(result.sun.sign)}`}
+                  detail={`${result.sun.degInSign.toFixed(1)}° · ${(locale === "en" ? result.sun.sign.en.traits : result.sun.sign.traits).join(", ")}`}
                 />
                 <ResultCard
-                  label="Луна — эмоции и потребности"
-                  value={`${result.moon.sign.symbol} ${result.moon.sign.ru}`}
-                  detail={`${result.moon.degInSign.toFixed(1)}° · внутренняя опора: ${result.moon.sign.keyword}`}
+                  label={t.moonLabel}
+                  value={`${result.moon.sign.symbol} ${sName(result.moon.sign)}`}
+                  detail={`${result.moon.degInSign.toFixed(1)}° · ${t.innerSupport}: ${locale === "en" ? result.moon.sign.en.keyword : result.moon.sign.keyword}`}
                 />
                 {result.ascendant ? (
                   <ResultCard
-                    label="Асцендент — как вас видят"
-                    value={`${result.ascendant.sign.symbol} ${result.ascendant.sign.ru}`}
-                    detail={`${result.ascendant.degInSign.toFixed(1)}° · первое впечатление`}
+                    label={t.ascLabel}
+                    value={`${result.ascendant.sign.symbol} ${sName(result.ascendant.sign)}`}
+                    detail={`${result.ascendant.degInSign.toFixed(1)}° · ${t.firstImpression}`}
                   />
                 ) : (
                   <ResultCard
-                    label="Асцендент"
-                    value="Нужно время рождения"
-                    detail="В Mini App можно уточнить время по событиям жизни (ректификация)"
+                    label={t.ascUnknown}
+                    value={locale === "en" ? "Birth time needed" : "Нужно время рождения"}
+                    detail={locale === "en" ? "In the Mini App you can refine the time from life events (rectification)" : "В Mini App можно уточнить время по событиям жизни (ректификация)"}
                   />
                 )}
               </div>
@@ -166,6 +172,7 @@ export default function NatalCalculator() {
                 result.sun.sign,
                 result.moon.sign,
                 result.ascendant?.sign ?? null,
+                locale,
               );
               return (
                 <div className="mt-6 space-y-3 rounded-2xl border border-hairline bg-surface p-6 text-sm leading-relaxed">
@@ -175,10 +182,7 @@ export default function NatalCalculator() {
                   {sum.asc ? (
                     <p className="text-muted">{sum.asc}</p>
                   ) : (
-                    <p className="text-muted">
-                      Добавьте время рождения — откроется асцендент: то, каким вас видят при первой
-                      встрече, и точная сетка домов.
-                    </p>
+                    <p className="text-muted">{t.addTimeHint}</p>
                   )}
                 </div>
               );
@@ -199,9 +203,9 @@ export default function NatalCalculator() {
               </div>
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-void/55 p-6 text-center">
                 <p className="max-w-md text-sm text-ink">
-                  Полная расшифровка всех 10 планет, домов и аспектов — уже рассчитана и ждёт вас в Astro Orb
+                  {t.unlockText}
                 </p>
-                <CTA page="natal-chart" cta="result_unlock">Открыть полный разбор</CTA>
+                <CTA page={ctaPage(locale, "natal-chart")} cta="result_unlock">{t.unlockCta}</CTA>
               </div>
             </div>
           </div>

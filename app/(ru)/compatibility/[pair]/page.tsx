@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: { pair: string } }): Meta
   return {
     title: `${r.a.ru} и ${r.b.ru} — совместимость знаков (${r.score}%)`,
     description: `Совместимость ${r.a.ruGen} и ${r.b.ruGen}: ${r.score}% — ${r.headline.toLowerCase()}. Сильные стороны, точки трения, синастрия.`,
-    alternates: { canonical: `/compatibility/${params.pair}` },
+    alternates: { canonical: `/compatibility/${params.pair}`, languages: { ru: `/compatibility/${params.pair}`, en: `/en/compatibility/${params.pair}`, "x-default": `/compatibility/${params.pair}` } },
     openGraph: pageOg(`/compatibility/${params.pair}`),
   };
 }

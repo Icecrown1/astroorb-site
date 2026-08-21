@@ -26,7 +26,7 @@ export function generateMetadata({ params }: { params: { sign: string } }): Meta
   return {
     title: `Гороскоп ${s.ru} на ${dateRu} — сегодня и завтра`,
     description: `Гороскоп ${s.ruGen} на сегодня, ${dateRu}: работа, отношения, самочувствие, совет дня. Личный прогноз по карте — в Astro Orb.`,
-    alternates: { canonical: `/horoscope/${s.slug}` },
+    alternates: { canonical: `/horoscope/${s.slug}`, languages: { ru: `/horoscope/${s.slug}`, en: `/en/horoscope/${s.slug}`, "x-default": `/horoscope/${s.slug}` } },
     openGraph: pageOg(`/horoscope/${s.slug}`),
   };
 }

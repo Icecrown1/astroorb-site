@@ -1,4 +1,5 @@
-import { SIGNS, Sign, Element, ELEMENT_RU, signBySlug } from "./zodiac";
+import { SIGNS, Sign, Element, ELEMENT_RU, ELEMENT_EN, signBySlug } from "./zodiac";
+import type { Locale } from "./i18n";
 
 /** Базовая совместимость стихий (0–100 основа). */
 const ELEMENT_SCORE: Record<Element, Record<Element, number>> = {
@@ -6,6 +7,20 @@ const ELEMENT_SCORE: Record<Element, Record<Element, number>> = {
   earth: { fire: 55, earth: 80, air: 54, water: 86 },
   air: { fire: 88, earth: 54, air: 76, water: 56 },
   water: { fire: 52, earth: 86, air: 56, water: 82 },
+};
+
+
+const ELEMENT_PAIR_TEXT_EN: Record<string, string> = {
+ "fire-fire": "Two fires feed one blaze: passion, speed and shared ambition — with occasional battles for the steering wheel.",
+ "earth-earth": "Two earth signs build slowly and for keeps: shared plans, money and home feel natural; the risk is routine without sparks.",
+ "air-air": "Two air signs never run out of things to say: friendship-in-love, ideas and mobility; grounding the everyday is the challenge.",
+ "water-water": "Two water signs understand each other without words: rare emotional depth — and the need not to drown in shared moods.",
+ "fire-earth": "Fire ignites, earth gives it form: impulse plus endurance can build a lot — if fire respects the pace and earth allows risk.",
+ "fire-air": "Air fans fire: inspiration, travel and big plans come easily; the pair's task is follow-through, not just takeoff.",
+ "fire-water": "Steam or a doused flame: strong attraction of opposites that needs careful handling of each other's intensity.",
+ "earth-air": "Earth wants results, air wants options: together you can turn ideas into working things — after agreeing on the tempo.",
+ "earth-water": "The most fertile combination: feelings find form, care becomes deeds; homes and teams rest on pairs like this.",
+ "air-water": "Mind meets feeling: endless conversations about emotions and psychology; the risk is analyzing love instead of living it."
 };
 
 const ELEMENT_PAIR_TEXT: Record<string, string> = {
@@ -37,7 +52,7 @@ export interface CompatResult {
 }
 
 /** Детерминированный расчёт пары: одна и та же пара всегда даёт один результат. */
-export function calcCompat(slugA: string, slugB: string): CompatResult | null {
+export function calcCompat(slugA: string, slugB: string, locale: Locale = "ru"): CompatResult | null {
   const a = signBySlug(slugA);
   const b = signBySlug(slugB);
   if (!a || !b) return null;
@@ -54,34 +69,61 @@ export function calcCompat(slugA: string, slugB: string): CompatResult | null {
   if (dist === 3) score -= 3; // квадрат
   score = Math.max(38, Math.min(97, score));
 
-  const pairText = ELEMENT_PAIR_TEXT[elementPairKey(a.element, b.element)];
+  const pairText = (locale === "en" ? ELEMENT_PAIR_TEXT_EN : ELEMENT_PAIR_TEXT)[elementPairKey(a.element, b.element)];
 
   const headline =
-    score >= 85
-      ? "Сильный природный резонанс"
-      : score >= 70
-        ? "Хороший потенциал союза"
-        : score >= 55
-          ? "Союз-работа: сложно, но перспективно"
-          : "Союз противоположных программ";
+    locale === "en"
+      ? score >= 85
+        ? "Strong natural resonance"
+        : score >= 70
+          ? "Good long-term potential"
+          : score >= 55
+            ? "A union that takes work — and rewards it"
+            : "A union of opposite programs"
+      : score >= 85
+        ? "Сильный природный резонанс"
+        : score >= 70
+          ? "Хороший потенциал союза"
+          : score >= 55
+            ? "Союз-работа: сложно, но перспективно"
+            : "Союз противоположных программ";
 
   const paragraph =
-    a.slug === b.slug
-      ? `${a.ru} и ${b.ru} — зеркальная пара: вы мгновенно узнаёте себя друг в друге. ${pairText} Ключевое слово этой пары — «${a.keyword}»: вдвоём его вдвое больше, со всеми плюсами и перегибами.`
-      : `${a.ru} (${ELEMENT_RU[a.element]}, ${a.ruler}) приносит в пару ${a.traits[0]} и ${a.traits[2]}, ${b.ru} (${ELEMENT_RU[b.element]}, ${b.ruler}) отвечает качествами «${b.traits[0]}» и «${b.traits[1]}». ${pairText}`;
+    locale === "en"
+      ? a.slug === b.slug
+        ? `${a.en.name} with ${b.en.name} is a mirror pair: you recognize yourself in each other instantly. ${pairText} The pair's keyword is "${a.en.keyword}" — together you get twice as much of it, perks and excesses included.`
+        : `${a.en.name} (${ELEMENT_EN[a.element]}, ruled by ${a.en.ruler}) brings ${a.en.traits[0]} and ${a.en.traits[2]} to the pair, while ${b.en.name} (${ELEMENT_EN[b.element]}, ruled by ${b.en.ruler}) answers with ${b.en.traits[0]} and ${b.en.traits[1]}. ${pairText}`
+      : a.slug === b.slug
+        ? `${a.ru} и ${b.ru} — зеркальная пара: вы мгновенно узнаёте себя друг в друге. ${pairText} Ключевое слово этой пары — «${a.keyword}»: вдвоём его вдвое больше, со всеми плюсами и перегибами.`
+        : `${a.ru} (${ELEMENT_RU[a.element]}, ${a.ruler}) приносит в пару ${a.traits[0]} и ${a.traits[2]}, ${b.ru} (${ELEMENT_RU[b.element]}, ${b.ruler}) отвечает качествами «${b.traits[0]}» и «${b.traits[1]}». ${pairText}`;
 
-  const strengths = [
-    `${a.ru}: ${a.traits.join(", ")}`,
-    `${b.ru}: ${b.traits.join(", ")}`,
-    dist === 6 ? "Ось противоположностей — сильное магнетическое притяжение" : `Стихии: ${ELEMENT_RU[a.element]} + ${ELEMENT_RU[b.element]}`,
-  ];
+  const strengths =
+    locale === "en"
+      ? [
+          `${a.en.name}: ${a.en.traits.join(", ")}`,
+          `${b.en.name}: ${b.en.traits.join(", ")}`,
+          dist === 6 ? "Axis of opposites — strong magnetic attraction" : `Elements: ${ELEMENT_EN[a.element]} + ${ELEMENT_EN[b.element]}`,
+        ]
+      : [
+          `${a.ru}: ${a.traits.join(", ")}`,
+          `${b.ru}: ${b.traits.join(", ")}`,
+          dist === 6 ? "Ось противоположностей — сильное магнетическое притяжение" : `Стихии: ${ELEMENT_RU[a.element]} + ${ELEMENT_RU[b.element]}`,
+        ];
 
-  const frictions = [
-    a.modality === b.modality && a.slug !== b.slug
-      ? "Одинаковая стратегия поведения — конкуренция за одну и ту же роль"
-      : "Разный темп принятия решений",
-    dist === 3 ? "Квадратура знаков: трение, которое либо разрушает, либо закаляет" : "Разные языки любви — их придётся выучить",
-  ];
+  const frictions =
+    locale === "en"
+      ? [
+          a.modality === b.modality && a.slug !== b.slug
+            ? "Same behavioral strategy — competing for the same role"
+            : "Different decision-making tempos",
+          dist === 3 ? "Square between signs: friction that either breaks or tempers" : "Different love languages — you'll have to learn each other's",
+        ]
+      : [
+          a.modality === b.modality && a.slug !== b.slug
+            ? "Одинаковая стратегия поведения — конкуренция за одну и ту же роль"
+            : "Разный темп принятия решений",
+          dist === 3 ? "Квадратура знаков: трение, которое либо разрушает, либо закаляет" : "Разные языки любви — их придётся выучить",
+        ];
 
   return { a, b, score, headline, paragraph, strengths, frictions };
 }

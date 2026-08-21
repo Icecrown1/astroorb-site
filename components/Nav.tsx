@@ -3,19 +3,27 @@
 import Link from "next/link";
 import { useState } from "react";
 import { deepLink } from "@/lib/site";
+import { UI, localePath, ctaPage, type Locale } from "@/lib/i18n";
+import { usePathname } from "next/navigation";
 import { trackCta } from "@/lib/track";
 
-const LINKS = [
-  { href: "/natal-chart", label: "Натальная карта" },
-  { href: "/matrix", label: "Матрица судьбы" },
-  { href: "/compatibility", label: "Совместимость" },
-  { href: "/horoscope", label: "Гороскопы" },
-  { href: "/pricing", label: "Тарифы" },
-  { href: "/about", label: "О проекте" },
-];
+const LINKS_BASE = [
+  { href: "/natal-chart", key: "natal" },
+  { href: "/matrix", key: "matrix" },
+  { href: "/compatibility", key: "compat" },
+  { href: "/horoscope", key: "horoscope" },
+  { href: "/pricing", key: "pricing" },
+  { href: "/about", key: "about" },
+] as const;
 
-export default function Nav() {
+export default function Nav({ locale = "ru" }: { locale?: Locale }) {
   const [open, setOpen] = useState(false);
+  const t = UI[locale];
+  const pathname = usePathname() || "/";
+  const LINKS = LINKS_BASE.map((l) => ({ href: localePath(locale, l.href), label: t.nav[l.key] }));
+  const counterpart = locale === "en" ? (pathname.replace(/^\/en/, "") || "/") : `/en${pathname === "/" ? "" : pathname}`;
+  const switchTo = locale === "en" ? "ru" : "en";
+  const setLangCookie = () => { document.cookie = `astro_lang=${switchTo};path=/;max-age=31536000`; };
 
   return (
     <>
@@ -42,12 +50,20 @@ export default function Nav() {
           </div>
 
           <div className="flex items-center gap-2">
+            <Link
+              href={counterpart}
+              onClick={setLangCookie}
+              aria-label={switchTo === "en" ? "Switch to English" : "Переключить на русский"}
+              className="hidden rounded-full border border-hairline px-3 py-1.5 text-[12px] font-semibold uppercase tracking-wide text-muted transition-colors hover:border-iris/40 hover:text-ink lg:inline-flex"
+            >
+              {switchTo}
+            </Link>
             <a
-              href={deepLink("nav", "open")}
-              onClick={() => trackCta("nav", "open")}
+              href={deepLink(ctaPage(locale, "nav"), "open")}
+              onClick={() => trackCta(ctaPage(locale, "nav"), "open")}
               className="hidden rounded-full bg-iris px-4 py-1.5 text-[13px] font-semibold text-void transition-transform duration-200 ease-out-strong active:scale-[0.97] sm:block whitespace-nowrap"
             >
-              Открыть в Telegram
+              {t.nav.open}
             </a>
             <button
               aria-label={open ? "Закрыть меню" : "Открыть меню"}
@@ -91,15 +107,25 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
+          <Link
+            href={counterpart}
+            onClick={() => { setLangCookie(); setOpen(false); }}
+            className={`mt-2 inline-flex w-max items-center gap-2 rounded-full border border-hairline px-5 py-2.5 text-sm font-semibold uppercase text-ink transition-[opacity,transform] duration-500 ease-out-strong ${
+              open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+            style={{ transitionDelay: open ? "400ms" : "0ms" }}
+          >
+            {switchTo === "en" ? "🇬🇧 English" : "🇷🇺 Русский"}
+          </Link>
           <a
-            href={deepLink("nav", "mobile_menu")}
-            onClick={() => trackCta("nav", "mobile_menu")}
+            href={deepLink(ctaPage(locale, "nav"), "mobile_menu")}
+            onClick={() => trackCta(ctaPage(locale, "nav"), "mobile_menu")}
             className={`mt-8 inline-flex w-max items-center gap-3 rounded-full bg-iris px-6 py-3 font-semibold text-void transition-[opacity,transform] duration-500 ease-out-strong ${
               open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
             style={{ transitionDelay: open ? "460ms" : "0ms" }}
           >
-            Открыть в Telegram ↗
+            {t.nav.open} ↗
           </a>
         </div>
       </div>

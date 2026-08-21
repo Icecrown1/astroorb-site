@@ -6,24 +6,31 @@ import { allPairs } from "@/lib/compat";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const page = (path: string, priority: number, changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"] = "weekly") => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: now,
-    changeFrequency,
-    priority,
-  });
+  type Freq = MetadataRoute.Sitemap[0]["changeFrequency"];
+  /** Пара записей RU+EN с взаимными hreflang-альтернативами. */
+  const pair = (path: string, priority: number, changeFrequency: Freq = "weekly"): MetadataRoute.Sitemap => {
+    const languages = {
+      ru: `${SITE_URL}${path}`,
+      en: `${SITE_URL}/en${path === "/" ? "" : path}`,
+      "x-default": `${SITE_URL}${path}`,
+    };
+    return [
+      { url: languages.ru, lastModified: now, changeFrequency, priority, alternates: { languages } },
+      { url: languages.en, lastModified: now, changeFrequency, priority: Math.max(0.1, priority - 0.2), alternates: { languages } },
+    ];
+  };
 
   return [
-    page("/", 1, "weekly"),
-    page("/natal-chart", 0.9),
-    page("/matrix", 0.9),
-    page("/compatibility", 0.9),
-    page("/horoscope", 0.9, "daily"),
-    page("/solar-return", 0.7),
-    page("/pricing", 0.8),
-    page("/about", 0.5, "monthly"),
-    ...SIGNS.map((s) => page(`/horoscope/${s.slug}`, 0.8, "daily")),
-    ...ARCANA.map((a) => page(`/matrix/${a.slug}`, 0.7, "monthly")),
-    ...allPairs().map((p) => page(`/compatibility/${p.pair}`, 0.6, "monthly")),
+    ...pair("/", 1, "weekly"),
+    ...pair("/natal-chart", 0.9),
+    ...pair("/matrix", 0.9),
+    ...pair("/compatibility", 0.9),
+    ...pair("/horoscope", 0.9, "daily"),
+    ...pair("/solar-return", 0.7),
+    ...pair("/pricing", 0.8),
+    ...pair("/about", 0.5, "monthly"),
+    ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
+    ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
+    ...allPairs().flatMap((p) => pair(`/compatibility/${p.pair}`, 0.6, "monthly")),
   ];
 }

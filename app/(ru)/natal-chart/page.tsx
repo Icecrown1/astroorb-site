@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Натальная карта онлайн бесплатно с расшифровкой",
   description:
     "Постройте натальную карту онлайн бесплатно: Солнце, Луна, асцендент и все планеты по дате рождения. Точный расчёт по эфемеридам NASA, расшифровка — от AI-астролога.",
-  alternates: { canonical: "/natal-chart" },
+  alternates: { canonical: "/natal-chart", languages: { ru: "/natal-chart", en: "/en/natal-chart", "x-default": "/natal-chart" } },
   openGraph: pageOg("/natal-chart"),
 };
 

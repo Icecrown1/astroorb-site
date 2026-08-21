@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Матрица судьбы рассчитать по дате рождения онлайн",
   description:
     "Рассчитайте матрицу судьбы по дате рождения бесплатно: личный аркан, аркан судьбы и ключевые энергии. Онлайн-калькулятор + расшифровка всех 22 арканов.",
-  alternates: { canonical: "/matrix" },
+  alternates: { canonical: "/matrix", languages: { ru: "/matrix", en: "/en/matrix", "x-default": "/matrix" } },
   openGraph: pageOg("/matrix"),
 };
 

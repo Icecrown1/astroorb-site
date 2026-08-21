@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Соляр — гороскоп на год от дня рождения",
   description:
     "Соляр (Solar Return): прогноз на личный год по точному моменту возвращения Солнца. Как читается карта года и как построить свою.",
-  alternates: { canonical: "/solar-return" },
+  alternates: { canonical: "/solar-return", languages: { ru: "/solar-return", en: "/en/solar-return", "x-default": "/solar-return" } },
   openGraph: pageOg("/solar-return"),
 };
 

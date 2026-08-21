@@ -17,7 +17,7 @@ export function generateMetadata({ params }: { params: { arcana: string } }): Me
   return {
     title: `Аркан ${a.n} «${a.ru}» в матрице судьбы — значение`,
     description: `Аркан ${a.n} (${a.ru}) в матрице судьбы: ${a.keyword}. Проявление в плюсе и минусе, задача энергии и как перевести её в ресурс.`,
-    alternates: { canonical: `/matrix/${a.slug}` },
+    alternates: { canonical: `/matrix/${a.slug}`, languages: { ru: `/matrix/${a.slug}`, en: `/en/matrix/${a.slug}`, "x-default": `/matrix/${a.slug}` } },
     openGraph: pageOg(`/matrix/${a.slug}`),
   };
 }

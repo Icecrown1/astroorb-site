@@ -5,8 +5,9 @@ import Link from "next/link";
 import { SIGNS } from "@/lib/zodiac";
 import { calcCompat, canonicalPair, type CompatResult } from "@/lib/compat";
 import CTA from "@/components/CTA";
+import { ctaPage, localePath, type Locale } from "@/lib/i18n";
 
-export default function CompatCalculator() {
+export default function CompatCalculator({ locale = "ru" }: { locale?: Locale }) {
   const [a, setA] = useState("leo");
   const [b, setB] = useState("libra");
   const resultRef = useRef<HTMLDivElement | null>(null);
@@ -18,8 +19,13 @@ export default function CompatCalculator() {
     resultRef.current.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   }, [result]);
 
+  const T = locale === "en"
+    ? { first: "First sign", second: "Second sign", check: "Check compatibility", pair: "Detailed pair page →", teaser1: (x: string, y: string) => `Love & passion: how ${x} and ${y} express feelings…`, teaser2: "Money & everyday life: who anchors stability in the pair…", teaser3: "Crisis points: three situations where the pair is at risk…", locked: "This is a general sign-based estimate. The precise synastry from two full birth charts is in Astro Orb", open: "Reading from your charts" }
+    : { first: "Первый знак", second: "Второй знак", check: "Проверить совместимость", pair: "{T.pair}", teaser1: (x: string, y: string) => `Любовь и страсть: как ${x} и ${y} проявляют чувства…`, teaser2: "Деньги и быт: кто в паре отвечает за стабильность…", teaser3: "Кризисные точки: три ситуации, в которых пара рискует…", locked: "{T.locked}", open: "Разбор по вашим картам" };
+  const sN = (x: { ru: string; en: { name: string } }) => (locale === "en" ? x.en.name : x.ru);
+
   function build() {
-    setResult(calcCompat(a, b));
+    setResult(calcCompat(a, b, locale));
   }
 
   return (
@@ -27,7 +33,7 @@ export default function CompatCalculator() {
       <div className="core p-6 md:p-10">
         <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr]">
           <label className="block">
-            <span className="text-xs uppercase tracking-[0.18em] text-muted">Первый знак</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">{T.first}</span>
             <select
               value={a}
               onChange={(e) => setA(e.target.value)}
@@ -35,14 +41,14 @@ export default function CompatCalculator() {
             >
               {SIGNS.map((s) => (
                 <option key={s.slug} value={s.slug}>
-                  {s.symbol} {s.ru}
+                  {s.symbol} {locale === "en" ? s.en.name : s.ru}
                 </option>
               ))}
             </select>
           </label>
           <div className="hidden items-end pb-3 font-display text-xl text-stellar sm:flex">+</div>
           <label className="block">
-            <span className="text-xs uppercase tracking-[0.18em] text-muted">Второй знак</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-muted">{T.second}</span>
             <select
               value={b}
               onChange={(e) => setB(e.target.value)}
@@ -50,7 +56,7 @@ export default function CompatCalculator() {
             >
               {SIGNS.map((s) => (
                 <option key={s.slug} value={s.slug}>
-                  {s.symbol} {s.ru}
+                  {s.symbol} {locale === "en" ? s.en.name : s.ru}
                 </option>
               ))}
             </select>
@@ -61,7 +67,7 @@ export default function CompatCalculator() {
           onClick={build}
           className="mt-6 w-full rounded-full bg-iris px-6 py-3.5 font-semibold text-void transition-[transform,box-shadow] duration-300 ease-out-strong hover:shadow-[0_8px_40px_-8px_rgba(142,123,255,0.55)] active:scale-[0.98] sm:w-auto"
         >
-          Проверить совместимость
+          {T.check}
         </button>
 
         {result && (
@@ -72,29 +78,29 @@ export default function CompatCalculator() {
               </div>
               <div>
                 <p className="font-display text-xl">
-                  {result.a.symbol} {result.a.ru} + {result.b.symbol} {result.b.ru}: {result.headline}
+                  {result.a.symbol} {sN(result.a)} + {result.b.symbol} {sN(result.b)}: {result.headline}
                 </p>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{result.paragraph}</p>
                 <Link
-                  href={`/compatibility/${canonicalPair(a, b)}`}
+                  href={localePath(locale, `/compatibility/${canonicalPair(a, b)}`)}
                   className="mt-3 inline-block text-sm text-iris hover:underline"
                 >
-                  Подробная страница пары →
+                  {T.pair}
                 </Link>
               </div>
             </div>
 
             <div className="relative mt-6 overflow-hidden rounded-2xl border border-hairline">
               <div className="select-none space-y-2 p-6 blur-[7px]" aria-hidden>
-                <p className="text-sm text-muted">Любовь и страсть: как {result.a.ru} и {result.b.ru} проявляют чувства…</p>
-                <p className="text-sm text-muted">Деньги и быт: кто в паре отвечает за стабильность…</p>
-                <p className="text-sm text-muted">Кризисные точки: три ситуации, в которых пара рискует…</p>
+                <p className="text-sm text-muted">{T.teaser1(sN(result.a), sN(result.b))}</p>
+                <p className="text-sm text-muted">{T.teaser2}</p>
+                <p className="text-sm text-muted">{T.teaser3}</p>
               </div>
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-void/55 p-6 text-center">
                 <p className="max-w-md text-sm text-ink">
-                  Это общий расчёт по знакам. Точная синастрия по двум полным натальным картам — в Astro Orb
+                  {T.locked}
                 </p>
-                <CTA page="compatibility" cta="result_unlock">Разбор по вашим картам</CTA>
+                <CTA page={ctaPage(locale, "compatibility")} cta="result_unlock">{T.open}</CTA>
               </div>
             </div>
           </div>

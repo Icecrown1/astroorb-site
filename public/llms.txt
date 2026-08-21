@@ -17,3 +17,7 @@
 - Расчёты: Swiss Ephemeris, точность NASA JPL; интерпретации: языковые модели
 - Полные разборы и AI-чат — в Telegram Mini App: https://t.me/AstroOrbI_Bot
 - Оплата: карты (чеки 54-ФЗ), TON, Telegram Stars; отмена подписки в один клик
+
+## English version
+- The full site is also available in English under https://astroorbi.com/en
+- Key pages: [Birth chart](https://astroorbi.com/en/natal-chart), [Matrix of Destiny](https://astroorbi.com/en/matrix), [Compatibility](https://astroorbi.com/en/compatibility), [Horoscopes](https://astroorbi.com/en/horoscope), [Pricing](https://astroorbi.com/en/pricing)

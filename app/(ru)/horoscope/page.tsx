@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Гороскоп на сегодня для всех знаков зодиака",
   description:
     "Гороскоп на сегодня и завтра для всех 12 знаков. Обновляется ежедневно. Личный прогноз по вашей натальной карте — в Astro Orb.",
-  alternates: { canonical: "/horoscope" },
+  alternates: { canonical: "/horoscope", languages: { ru: "/horoscope", en: "/en/horoscope", "x-default": "/horoscope" } },
   openGraph: pageOg("/horoscope"),
 };
 

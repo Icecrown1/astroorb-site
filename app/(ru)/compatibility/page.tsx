@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Совместимость знаков зодиака по дате рождения",
   description:
     "Совместимость знаков зодиака онлайн: процент, сильные стороны пары и точки трения. Бесплатно + полная синастрия по двум картам.",
-  alternates: { canonical: "/compatibility" },
+  alternates: { canonical: "/compatibility", languages: { ru: "/compatibility", en: "/en/compatibility", "x-default": "/compatibility" } },
   openGraph: pageOg("/compatibility"),
 };
 
