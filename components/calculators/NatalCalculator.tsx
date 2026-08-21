@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CITIES } from "@/lib/cities";
 import { calcNatal, type NatalResult } from "@/lib/natal";
+import { composeNatalSummary } from "@/lib/interpret";
 import NatalWheel from "@/components/NatalWheel";
 import CTA from "@/components/CTA";
 
@@ -160,13 +161,28 @@ export default function NatalCalculator() {
               </div>
             </div>
 
-            <p className="mt-6 rounded-2xl border border-hairline bg-surface p-5 text-sm leading-relaxed text-muted">
-              Коротко: Солнце в знаке {result.sun.sign.ru} задаёт ядро характера — {result.sun.sign.traits.join(", ")}.
-              Луна в знаке {result.moon.sign.ru} описывает эмоции и то, где вы восстанавливаетесь: {result.moon.sign.keyword} и {result.moon.sign.traits[1]}.
-              {result.ascendant
-                ? ` Асцендент в знаке ${result.ascendant.sign.ru} — как вас видят при первой встрече: ${result.ascendant.sign.traits[0]} и ${result.ascendant.sign.traits[2]}.`
-                : " Добавьте время рождения — откроется асцендент: то, как вас видят при первой встрече."}
-            </p>
+            {(() => {
+              const sum = composeNatalSummary(
+                result.sun.sign,
+                result.moon.sign,
+                result.ascendant?.sign ?? null,
+              );
+              return (
+                <div className="mt-6 space-y-3 rounded-2xl border border-hairline bg-surface p-6 text-sm leading-relaxed">
+                  <p>{sum.sun}</p>
+                  <p className="text-muted">{sum.moon}</p>
+                  <p className="text-muted">{sum.blend}</p>
+                  {sum.asc ? (
+                    <p className="text-muted">{sum.asc}</p>
+                  ) : (
+                    <p className="text-muted">
+                      Добавьте время рождения — откроется асцендент: то, каким вас видят при первой
+                      встрече, и точная сетка домов.
+                    </p>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* Частичный результат: интерпретации залочены → конверсия */}
             <div className="relative mt-8 overflow-hidden rounded-2xl border border-hairline">
