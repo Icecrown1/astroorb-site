@@ -160,6 +160,14 @@ export default function NatalCalculator() {
               </div>
             </div>
 
+            <p className="mt-6 rounded-2xl border border-hairline bg-surface p-5 text-sm leading-relaxed text-muted">
+              Коротко: Солнце в знаке {result.sun.sign.ru} задаёт ядро характера — {result.sun.sign.traits.join(", ")}.
+              Луна в знаке {result.moon.sign.ru} описывает эмоции и то, где вы восстанавливаетесь: {result.moon.sign.keyword} и {result.moon.sign.traits[1]}.
+              {result.ascendant
+                ? ` Асцендент в знаке ${result.ascendant.sign.ru} — как вас видят при первой встрече: ${result.ascendant.sign.traits[0]} и ${result.ascendant.sign.traits[2]}.`
+                : " Добавьте время рождения — откроется асцендент: то, как вас видят при первой встрече."}
+            </p>
+
             {/* Частичный результат: интерпретации залочены → конверсия */}
             <div className="relative mt-8 overflow-hidden rounded-2xl border border-hairline">
               <div className="select-none space-y-3 p-6 blur-[7px]" aria-hidden>

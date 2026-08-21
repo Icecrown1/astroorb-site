@@ -90,7 +90,7 @@ export function calcNatal(
       -Math.cos(theta),
       Math.sin(theta) * Math.cos(eps) + Math.tan(phi) * Math.sin(eps),
     );
-    const ascLon = norm360(ascRad / DEG);
+    const ascLon = norm360(ascRad / DEG + 180); // atan2-ветка формулы даёт десцендент; асцендент — противоположная точка (валидировано против Swiss Ephemeris)
     ascendant = {
       lon: ascLon,
       sign: signByLongitude(ascLon),

@@ -45,7 +45,7 @@ export default function Nav() {
             <a
               href={deepLink("nav", "open")}
               onClick={() => trackCta("nav", "open")}
-              className="hidden rounded-full bg-iris px-4 py-1.5 text-[13px] font-semibold text-void transition-transform duration-200 ease-out-strong active:scale-[0.97] sm:block"
+              className="hidden rounded-full bg-iris px-4 py-1.5 text-[13px] font-semibold text-void transition-transform duration-200 ease-out-strong active:scale-[0.97] sm:block whitespace-nowrap"
             >
               Открыть в Telegram
             </a>
