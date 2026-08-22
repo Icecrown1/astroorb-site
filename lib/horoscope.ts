@@ -158,8 +158,6 @@ export function composeHoroscope(sign: Sign, date: Date, shift = 0, locale: Loca
 export async function getDayHoroscope(sign: Sign, date: Date, shift = 0, locale: Locale = "ru"): Promise<DayHoroscope> {
   const fallback = composeHoroscope(sign, date, shift, locale);
 
-  // Бэкенд пока пишет гороскопы только на русском — EN живёт на композере.
-  if (locale === "en") return fallback;
   const api = process.env.HOROSCOPE_API_URL;
 
   // Бэкенд генерирует только «сегодня»; «завтра» всегда из композера.
@@ -167,7 +165,7 @@ export async function getDayHoroscope(sign: Sign, date: Date, shift = 0, locale:
 
   try {
     const res = await fetch(
-      `${api.replace(/\/+$/, "")}/api/public/sign-horoscope/${sign.slug}`,
+      `${api.replace(/\/+$/, "")}/api/public/sign-horoscope/${sign.slug}?locale=${locale}`,
       { next: { revalidate: 86400 }, signal: AbortSignal.timeout(20000) }
     );
     if (!res.ok) return fallback;

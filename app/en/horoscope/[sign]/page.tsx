@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import { SIGNS, ELEMENT_EN, signBySlug } from "@/lib/zodiac";
-import { composeHoroscope } from "@/lib/horoscope";
+import { composeHoroscope, getDayHoroscope } from "@/lib/horoscope";
 import { pageOg } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -26,12 +26,12 @@ export function generateMetadata({ params }: { params: { sign: string } }): Meta
   };
 }
 
-export default function EnSignHoroscopePage({ params }: { params: { sign: string } }) {
+export default async function EnSignHoroscopePage({ params }: { params: { sign: string } }) {
   const s = signBySlug(params.sign);
   if (!s) notFound();
 
   const now = new Date();
-  const today = composeHoroscope(s, now, 0, "en");
+  const today = await getDayHoroscope(s, now, 0, "en");
   const tomorrow = composeHoroscope(s, now, 1, "en");
 
   const idx = SIGNS.findIndex((x) => x.slug === s.slug);
