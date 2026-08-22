@@ -29,7 +29,7 @@ export default function Nav({ locale = "ru" }: { locale?: Locale }) {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40 flex justify-center px-4 pt-5">
-        <nav className="flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border border-hairline bg-void/70 px-5 py-2.5 backdrop-blur-xl">
+        <nav className="flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border border-hairline bg-void/70 px-5 py-2.5 backdrop-blur-xl">
           <Link
             href="/"
             className="font-display text-sm tracking-wide text-ink"
@@ -43,7 +43,9 @@ export default function Nav({ locale = "ru" }: { locale?: Locale }) {
               <Link
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-3 py-1.5 text-[13px] text-muted transition-colors duration-200 hover:bg-white/[0.06] hover:text-ink"
+                className={`rounded-full px-2.5 py-1.5 text-[13px] text-muted transition-colors duration-200 hover:bg-white/[0.06] hover:text-ink whitespace-nowrap ${
+                  l.href.endsWith("/about") ? "hidden xl:block" : ""
+                }`}
               >
                 {l.label}
               </Link>
