@@ -12,6 +12,7 @@ const LINKS_BASE = [
   { href: "/matrix", key: "matrix" },
   { href: "/compatibility", key: "compat" },
   { href: "/horoscope", key: "horoscope" },
+  { href: "/blog", key: "blog" },
   { href: "/pricing", key: "pricing" },
   { href: "/about", key: "about" },
 ] as const;
@@ -20,7 +21,7 @@ export default function Nav({ locale = "ru" }: { locale?: Locale }) {
   const [open, setOpen] = useState(false);
   const t = UI[locale];
   const pathname = usePathname() || "/";
-  const LINKS = LINKS_BASE.map((l) => ({ href: localePath(locale, l.href), label: t.nav[l.key] }));
+  const LINKS = LINKS_BASE.filter((l) => (t.nav as Record<string, string | undefined>)[l.key]).map((l) => ({ href: localePath(locale, l.href), label: (t.nav as Record<string, string>)[l.key] }));
   const counterpart = locale === "en" ? (pathname.replace(/^\/en/, "") || "/") : `/en${pathname === "/" ? "" : pathname}`;
   const switchTo = locale === "en" ? "ru" : "en";
   const setLangCookie = () => { document.cookie = `astro_lang=${switchTo};path=/;max-age=31536000`; };

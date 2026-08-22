@@ -87,6 +87,9 @@ export default function Footer({ locale = "ru" }: { locale?: Locale }) {
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link className="text-ink/80 hover:text-ink" href={p("/pricing")}>{t.pricing}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/about")}>{t.about}</Link></li>
+            {locale === "ru" && (
+              <li><Link className="text-ink/80 hover:text-ink" href="/blog">Блог</Link></li>
+            )}
             <li><Link className="text-ink/80 hover:text-ink" href={p("/solar-return")}>{t.solar}</Link></li>
           </ul>
           <p className="mt-6 text-xs leading-relaxed text-muted">{t.legal}</p>

@@ -21,3 +21,6 @@
 ## English version
 - The full site is also available in English under https://astroorbi.com/en
 - Key pages: [Birth chart](https://astroorbi.com/en/natal-chart), [Matrix of Destiny](https://astroorbi.com/en/matrix), [Compatibility](https://astroorbi.com/en/compatibility), [Horoscopes](https://astroorbi.com/en/horoscope), [Pricing](https://astroorbi.com/en/pricing)
+
+## Блог
+- [Блог Astro Orb](https://astroorbi.com/blog): транзиты с точными датами (Swiss Ephemeris), Луна, натальная карта, совместимость

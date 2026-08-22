@@ -3,6 +3,7 @@ import { SITE_URL } from "@/lib/site";
 import { SIGNS } from "@/lib/zodiac";
 import { ARCANA } from "@/lib/arcana";
 import { allPairs } from "@/lib/compat";
+import { ARTICLES } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -32,5 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
     ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
     ...allPairs().flatMap((p) => pair(`/compatibility/${p.pair}`, 0.6, "monthly")),
+    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    ...ARTICLES.map((a) => ({
+      url: `${SITE_URL}/blog/${a.slug}`,
+      lastModified: new Date(a.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 }

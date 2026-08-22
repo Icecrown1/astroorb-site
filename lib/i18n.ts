@@ -17,6 +17,7 @@ export const UI = {
       matrix: "Матрица судьбы",
       compat: "Совместимость",
       horoscope: "Гороскопы",
+      blog: "Блог",
       pricing: "Тарифы",
       about: "О проекте",
       open: "Открыть в Telegram",
