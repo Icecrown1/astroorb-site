@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/site";
 import { SIGNS } from "@/lib/zodiac";
 import { ARCANA } from "@/lib/arcana";
 import { allPairs } from "@/lib/compat";
-import { ARTICLES } from "@/lib/blog";
+import { ARTICLES, SLUG_RU_TO_EN } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -33,12 +33,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
     ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
     ...allPairs().flatMap((p) => pair(`/compatibility/${p.pair}`, 0.6, "monthly")),
-    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    ...ARTICLES.map((a) => ({
-      url: `${SITE_URL}/blog/${a.slug}`,
-      lastModified: new Date(a.date),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
+    ...pair("/blog", 0.8, "weekly"),
+    ...ARTICLES.flatMap((a) => {
+      const languages = {
+        ru: `${SITE_URL}/blog/${a.slug}`,
+        en: `${SITE_URL}/en/blog/${SLUG_RU_TO_EN[a.slug]}`,
+        "x-default": `${SITE_URL}/blog/${a.slug}`,
+      };
+      return [
+        { url: languages.ru, lastModified: new Date(a.date), changeFrequency: "monthly" as const, priority: 0.7, alternates: { languages } },
+        { url: languages.en, lastModified: new Date(a.date), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages } },
+      ];
+    }),
   ];
 }

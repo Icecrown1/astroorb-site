@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Блог об астрологии: транзиты, Луна, натальная карта",
   description:
     "Практичная астрология без воды: точные даты транзитов по Swiss Ephemeris, разборы натальной карты, Луна и совместимость. Блог Astro Orb.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog", languages: { ru: "/blog", en: "/en/blog", "x-default": "/blog" } },
   openGraph: pageOg("/blog"),
 };
 

@@ -24,3 +24,4 @@
 
 ## Блог
 - [Блог Astro Orb](https://astroorbi.com/blog): транзиты с точными датами (Swiss Ephemeris), Луна, натальная карта, совместимость
+- [Astro Orb Blog (EN)](https://astroorbi.com/en/blog): Mercury retrograde and Moon calendar 2026 with exact Swiss Ephemeris times, birth chart guides

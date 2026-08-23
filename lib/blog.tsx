@@ -326,3 +326,16 @@ export const ARTICLES: Article[] = [
 ];
 
 export const articleBySlug = (slug: string) => ARTICLES.find((a) => a.slug === slug) || null;
+
+/** Соответствие слагов RU → EN (для hreflang-пар). */
+export const SLUG_RU_TO_EN: Record<string, string> = {
+  "retrogradnyj-merkurij-2026": "mercury-retrograde-2026",
+  "lunnyj-kalendar-2026": "moon-calendar-2026",
+  "kak-uznat-ascendent": "how-to-find-your-rising-sign",
+  "luna-v-natalnoj-karte": "moon-sign-meaning",
+  "sovmestimost-po-date-rozhdeniya": "birth-date-compatibility",
+};
+export const SLUG_EN_TO_RU: Record<string, string> = Object.fromEntries(
+  Object.entries(SLUG_RU_TO_EN).map(([ru, en]) => [en, ru]),
+);
+

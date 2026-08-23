@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CTA from "@/components/CTA";
-import { ARTICLES, articleBySlug, inline, type Block, SLUG_RU_TO_EN } from "@/lib/blog";
+import { inline, type Block, SLUG_EN_TO_RU } from "@/lib/blog";
+import { ARTICLES_EN as ARTICLES, articleBySlugEn as articleBySlug } from "@/lib/blogEn";
 import { pageOg, SITE_URL } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -18,13 +19,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: a.title,
     description: a.description,
-    alternates: { canonical: `/blog/${a.slug}`, languages: { ru: `/blog/${a.slug}`, en: `/en/blog/${SLUG_RU_TO_EN[a.slug]}`, "x-default": `/blog/${a.slug}` } },
-    openGraph: { ...pageOg(`/blog/${a.slug}`), type: "article", publishedTime: a.date },
+    alternates: { canonical: `/en/blog/${a.slug}`, languages: { ru: `/blog/${SLUG_EN_TO_RU[a.slug]}`, en: `/en/blog/${a.slug}`, "x-default": `/blog/${SLUG_EN_TO_RU[a.slug]}` } },
+    openGraph: { ...pageOg(`/en/blog/${a.slug}`, "en"), type: "article", publishedTime: a.date },
   };
 }
 
 const fmtDate = (iso: string) =>
-  new Date(iso + "T12:00:00Z").toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" });
+  new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
 function Render({ b, ctaSlug }: { b: Block; ctaSlug: string }) {
   switch (b.type) {
@@ -73,7 +74,7 @@ function Render({ b, ctaSlug }: { b: Block; ctaSlug: string }) {
             <p className="font-display text-lg">{b.label}</p>
             <p className="mx-auto mt-2 max-w-xl text-sm text-muted">{b.text}</p>
             <div className="mt-5 flex justify-center">
-              <CTA page={`blog_${ctaSlug}`} cta={b.ctaId}>Открыть Astro Orb</CTA>
+              <CTA page={`en_blog_${ctaSlug}`} cta={b.ctaId}>Open Astro Orb</CTA>
             </div>
           </div>
         </div>
@@ -81,7 +82,7 @@ function Render({ b, ctaSlug }: { b: Block; ctaSlug: string }) {
   }
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
+export default function ArticlePageEn({ params }: { params: { slug: string } }) {
   const a = articleBySlug(params.slug);
   if (!a) notFound();
 
@@ -93,20 +94,20 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     description: a.description,
     datePublished: a.date,
     dateModified: a.date,
-    inLanguage: "ru-RU",
+    inLanguage: "en",
     author: { "@type": "Organization", name: "Astro Orb", url: SITE_URL },
     publisher: { "@id": `${SITE_URL}/#org` },
-    mainEntityOfPage: `${SITE_URL}/blog/${a.slug}`,
+    mainEntityOfPage: `${SITE_URL}/en/blog/${a.slug}`,
   };
 
   return (
     <main className="mx-auto max-w-3xl px-4 pb-24 pt-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-      <Breadcrumbs items={[{ href: "/blog", label: "Блог" }, { href: `/blog/${a.slug}`, label: a.h1 }]} />
+      <Breadcrumbs items={[{ href: "/en/blog", label: "Blog" }, { href: `/en/blog/${a.slug}`, label: a.h1 }]} />
       <div className="mt-6 flex items-center gap-3 text-xs text-muted">
         <span className="rounded-full border border-hairline px-3 py-1 uppercase tracking-[0.14em]">{a.tag}</span>
         <time dateTime={a.date}>{fmtDate(a.date)}</time>
-        <span>· {a.minutes} мин чтения</span>
+        <span>· {a.minutes} min read</span>
       </div>
       <h1 className="mt-4 font-display text-3xl leading-tight md:text-4xl">{a.h1}</h1>
       <article>
@@ -116,10 +117,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       </article>
 
       <div className="mt-14 border-t border-hairline pt-8">
-        <p className="eyebrow">Ещё по теме</p>
+        <p className="eyebrow">More reading</p>
         <div className="mt-4 grid gap-3">
           {related.map((r) => (
-            <Link key={r.slug} href={`/blog/${r.slug}`} className="text-[15px] text-ink underline decoration-hairline underline-offset-4 transition-colors hover:decoration-iris">
+            <Link key={r.slug} href={`/en/blog/${r.slug}`} className="text-[15px] text-ink underline decoration-hairline underline-offset-4 transition-colors hover:decoration-iris">
               {r.title}
             </Link>
           ))}

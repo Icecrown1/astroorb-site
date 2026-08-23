@@ -71,6 +71,7 @@ export const UI = {
       matrix: "Destiny matrix",
       compat: "Compatibility",
       horoscope: "Horoscopes",
+      blog: "Blog",
       pricing: "Pricing",
       about: "About",
       open: "Open in Telegram",
