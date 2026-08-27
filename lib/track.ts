@@ -12,6 +12,7 @@ export function trackCta(page: string, cta: string) {
     const w = window as any;
     if (ymId && typeof w.ym === "function") {
       w.ym(Number(ymId), "reachGoal", "cta_click", { page, cta, label });
+      w.gtag?.("event", "cta_click", { page, cta, label });
     }
     if (typeof w.gtag === "function") {
       w.gtag("event", "cta_click", { page, cta, label });
@@ -27,6 +28,7 @@ export function trackGoal(goal: string, params?: Record<string, unknown>) {
     const ymId = process.env.NEXT_PUBLIC_YM_ID;
     const w = window as any;
     if (ymId && typeof w.ym === "function") w.ym(Number(ymId), "reachGoal", goal, params);
+    w.gtag?.("event", goal, params || {});
     if (typeof w.gtag === "function") w.gtag("event", goal, params);
   } catch {
     /* noop */
