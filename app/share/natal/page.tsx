@@ -33,7 +33,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const og = `/api/og?t=natal&sun=${sun.slug}&moon=${moon.slug}${asc ? `&asc=${asc.slug}` : ""}&l=${locale}`;
   return {
     title,
-    description: en ? "My birth chart in Astro Orb" : "Моя натальная карта в Astro Orb",
+    description: en ? "My birth chart in AstroOrbi" : "Моя натальная карта в AstroOrbi",
     robots: { index: false, follow: true },
     alternates: { canonical: localePath(locale, "/natal-chart") },
     openGraph: {

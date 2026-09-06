@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
   const t = q.get("t");
   const l = q.get("l") === "en" ? "en" : "ru";
   const en = l === "en";
-  const footer = en ? "Astro Orb · astroorbi.com/en" : "Astro Orb · astroorbi.com";
+  const footer = en ? "AstroOrbi · astroorbi.com/en" : "AstroOrbi · astroorbi.com";
   const opts = {
     width: 1200,
     height: 630,

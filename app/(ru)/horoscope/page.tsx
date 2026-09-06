@@ -10,7 +10,7 @@ import { SIGNS } from "@/lib/zodiac";
 export const metadata: Metadata = {
   title: "Гороскоп на сегодня для всех знаков зодиака",
   description:
-    "Гороскоп на сегодня и завтра для всех 12 знаков. Обновляется ежедневно. Личный прогноз по вашей натальной карте — в Astro Orb.",
+    "Гороскоп на сегодня и завтра для всех 12 знаков. Обновляется ежедневно. Личный прогноз по вашей натальной карте — в AstroOrbi.",
   alternates: { canonical: "/horoscope", languages: { ru: "/horoscope", en: "/en/horoscope", "x-default": "/horoscope" } },
   openGraph: pageOg("/horoscope"),
 };
@@ -57,7 +57,7 @@ export default function HoroscopeHub() {
           <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center rounded-2xl border border-hairline bg-surface p-6">
             <p className="text-sm sm:flex-1 text-muted">
               Общий гороскоп — ориентир по погоде дня. Личный прогноз по вашей{" "}
-              <Link href="/natal-chart" className="text-iris hover:underline">натальной карте</Link> — в Astro Orb.
+              <Link href="/natal-chart" className="text-iris hover:underline">натальной карте</Link> — в AstroOrbi.
             </p>
             <CTA page="horoscope" cta="hub">Личный гороскоп</CTA>
           </div>

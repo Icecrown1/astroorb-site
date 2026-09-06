@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 };
 
 const FAQ_ITEMS = [
-  { q: "When does the solar year start?", a: "At the exact moment the Sun returns to its natal degree — up to a day away from your calendar birthday. Astro Orb calculates the moment to the minute." },
-  { q: "Does location matter?", a: "Classically the chart is cast for where you are at the solar-return moment; some schools use the birthplace. Astro Orb calculates for your current city, with an option to compare." },
+  { q: "When does the solar year start?", a: "At the exact moment the Sun returns to its natal degree — up to a day away from your calendar birthday. AstroOrbi calculates the moment to the minute." },
+  { q: "Does location matter?", a: "Classically the chart is cast for where you are at the solar-return moment; some schools use the birthplace. AstroOrbi calculates for your current city, with an option to compare." },
   { q: "How is this different from a yearly horoscope?", a: "A magazine yearly horoscope covers a twelfth of humanity. A Solar Return is your personal year chart: its ascendant, planet placements in houses — a unique configuration that won't repeat." },
   { q: "When is the best time to read it?", a: "Two or three weeks before your birthday — to enter the new personal year with a map: themes, strong months, caution zones." },
 ];
@@ -46,7 +46,7 @@ export default function EnSolarReturnPage() {
             <p>
               The strongest technique is overlaying the return on the natal chart: which of your
               houses receive the year's planets — that's where events concentrate. This is exactly
-              what the AI reading in Astro Orb does: it compares both charts and writes a year plan
+              what the AI reading in AstroOrbi does: it compares both charts and writes a year plan
               in plain language — themes, months of peak energy, zones of caution.
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function EnSolarReturnPage() {
         <Reveal delay={100}>
           <div className="mt-10 rounded-2xl border border-hairline bg-surface p-6">
             <p className="text-sm leading-relaxed text-muted">
-              The Solar Return is calculated in Astro Orb Premium: the return moment to the minute,
+              The Solar Return is calculated in AstroOrbi Premium: the return moment to the minute,
               the year's chart and a full AI reading.
             </p>
             <div className="mt-5">

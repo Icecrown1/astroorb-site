@@ -74,7 +74,7 @@ function Render({ b, ctaSlug }: { b: Block; ctaSlug: string }) {
             <p className="font-display text-lg">{b.label}</p>
             <p className="mx-auto mt-2 max-w-xl text-sm text-muted">{b.text}</p>
             <div className="mt-5 flex justify-center">
-              <CTA page={`en_blog_${ctaSlug}`} cta={b.ctaId}>Open Astro Orb</CTA>
+              <CTA page={`en_blog_${ctaSlug}`} cta={b.ctaId}>Open AstroOrbi</CTA>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function ArticlePageEn({ params }: { params: { slug: string } }) 
     datePublished: a.date,
     dateModified: a.date,
     inLanguage: "en",
-    author: { "@type": "Organization", name: "Astro Orb", url: SITE_URL },
+    author: { "@type": "Organization", name: "AstroOrbi", url: SITE_URL },
     publisher: { "@id": `${SITE_URL}/#org` },
     mainEntityOfPage: `${SITE_URL}/en/blog/${a.slug}`,
   };

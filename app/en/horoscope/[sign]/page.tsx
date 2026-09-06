@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: { sign: string } }): Meta
   const dateEn = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", timeZone: "Europe/Moscow" });
   return {
     title: `${s.en.name} Horoscope for ${dateEn} — Today & Tomorrow`,
-    description: `${s.en.name} horoscope for today, ${dateEn}: work, relationships, well-being and the day's advice. Updated daily. A personal forecast from your chart is in Astro Orb.`,
+    description: `${s.en.name} horoscope for today, ${dateEn}: work, relationships, well-being and the day's advice. Updated daily. A personal forecast from your chart is in AstroOrbi.`,
     alternates: { canonical: `/en/horoscope/${s.slug}`, languages: { ru: `/horoscope/${s.slug}`, en: `/en/horoscope/${s.slug}`, "x-default": `/horoscope/${s.slug}` } },
     openGraph: pageOg(`/en/horoscope/${s.slug}`, "en"),
   };
@@ -45,14 +45,14 @@ export default async function EnSignHoroscopePage({ params }: { params: { sign: 
     datePublished: nowIso,
     dateModified: nowIso,
     inLanguage: "en",
-    author: { "@type": "Organization", name: "Astro Orb" },
+    author: { "@type": "Organization", name: "AstroOrbi" },
     mainEntityOfPage: `/en/horoscope/${s.slug}`,
   };
 
   const faq = [
     { q: "Who is this horoscope for?", a: `For those born ${s.en.dates} — Sun sign ${s.en.name}. If you were born on a cusp, your exact sign appears in the birth chart calculation.` },
-    { q: `Why is the ${s.en.name} horoscope the same for everyone?`, a: `About one twelfth of people share this sign. A general horoscope describes the day's background; personal events depend on your full chart — that's what Astro Orb reads for you.` },
-    { q: "When does the forecast update?", a: "Every night. Weekly and monthly forecasts live in Astro Orb together with your personal transits." },
+    { q: `Why is the ${s.en.name} horoscope the same for everyone?`, a: `About one twelfth of people share this sign. A general horoscope describes the day's background; personal events depend on your full chart — that's what AstroOrbi reads for you.` },
+    { q: "When does the forecast update?", a: "Every night. Weekly and monthly forecasts live in AstroOrbi together with your personal transits." },
   ];
 
   return (

@@ -5,9 +5,9 @@ import Reveal from "@/components/Reveal";
 import { pageOg } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Astro Orb — Technology & Method",
+  title: "About AstroOrbi — Technology & Method",
   description:
-    "Swiss Ephemeris calculations on NASA JPL data, AI interpretations, honest payments. How Astro Orb works under the hood.",
+    "Swiss Ephemeris calculations on NASA JPL data, AI interpretations, honest payments. How AstroOrbi works under the hood.",
   alternates: { canonical: "/en/about", languages: { ru: "/about", en: "/en/about", "x-default": "/about" } },
   openGraph: pageOg("/en/about", "en"),
 };
@@ -25,7 +25,7 @@ export default function EnAboutPage() {
         <Reveal>
           <div className="mt-10 space-y-4 text-[15px] leading-relaxed text-muted">
             <p>
-              Astro Orb stands on two components. The first is astronomy: all planetary positions are
+              AstroOrbi stands on two components. The first is astronomy: all planetary positions are
               calculated by Swiss Ephemeris, the professional standard built on NASA JPL DE ephemerides
               with sub-arc-second precision. Every chart in the app is real sky, not tables from a
               magazine.
@@ -42,7 +42,7 @@ export default function EnAboutPage() {
               is up to you. No scare tactics, no "remove the curse" upsells — that's a principle.
             </p>
             <p>
-              Astro Orb runs as a Telegram Mini App: no installs, charts saved, subscription
+              AstroOrbi runs as a Telegram Mini App: no installs, charts saved, subscription
               cancellable in one click. Payments by card, TON or Telegram Stars.
             </p>
           </div>
@@ -50,7 +50,7 @@ export default function EnAboutPage() {
 
         <Reveal delay={100}>
           <div className="mt-10">
-            <CTA page="en_about" cta="main">Open Astro Orb</CTA>
+            <CTA page="en_about" cta="main">Open AstroOrbi</CTA>
           </div>
         </Reveal>
       </section>

@@ -10,7 +10,7 @@ import { pageOg } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Today's Horoscope for All Zodiac Signs",
   description:
-    "Free daily horoscope for all 12 zodiac signs, updated every day. A personal forecast from your own birth chart is available in Astro Orb.",
+    "Free daily horoscope for all 12 zodiac signs, updated every day. A personal forecast from your own birth chart is available in AstroOrbi.",
   alternates: { canonical: "/en/horoscope", languages: { ru: "/horoscope", en: "/en/horoscope", "x-default": "/horoscope" } },
   openGraph: pageOg("/en/horoscope", "en"),
 };
@@ -57,7 +57,7 @@ export default function EnHoroscopeHub() {
           <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-hairline bg-surface p-6 sm:flex-row sm:items-center">
             <p className="text-sm text-muted sm:flex-1">
               A general horoscope is the day's weather report. Your personal forecast from your{" "}
-              <Link href="/en/natal-chart" className="text-iris hover:underline">birth chart</Link> is in Astro Orb.
+              <Link href="/en/natal-chart" className="text-iris hover:underline">birth chart</Link> is in AstroOrbi.
             </p>
             <CTA page="en_horoscope" cta="hub">My personal horoscope</CTA>
           </div>

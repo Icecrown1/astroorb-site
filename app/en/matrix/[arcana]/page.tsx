@@ -32,7 +32,7 @@ export default function EnArcanaPage({ params }: { params: { arcana: string } })
   const faq = [
     { q: `What does arcana ${a.n} mean in the personal position?`, a: `The personal arcana "${a.en.name}" describes character and style of action: ${a.en.keyword}. In plus it's a resource; in minus, a repeating scenario worth becoming aware of.` },
     { q: `Is "${a.en.name}" a good or a bad arcana?`, a: "There are no bad arcana in the matrix: every energy has a plus and a minus expression. The task is to notice the minus and consciously shift the energy into plus." },
-    { q: "Where can I see the full layout?", a: "The complete matrix with all positions (family line, karma, money, purpose by ages) is built in Astro Orb in a minute from your birth date." },
+    { q: "Where can I see the full layout?", a: "The complete matrix with all positions (family line, karma, money, purpose by ages) is built in AstroOrbi in a minute from your birth date." },
   ];
 
   return (

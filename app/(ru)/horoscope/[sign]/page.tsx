@@ -25,7 +25,7 @@ export function generateMetadata({ params }: { params: { sign: string } }): Meta
   });
   return {
     title: `Гороскоп ${s.ru} на ${dateRu} — сегодня и завтра`,
-    description: `Гороскоп ${s.ruGen} на сегодня, ${dateRu}: работа, отношения, самочувствие, совет дня. Личный прогноз по карте — в Astro Orb.`,
+    description: `Гороскоп ${s.ruGen} на сегодня, ${dateRu}: работа, отношения, самочувствие, совет дня. Личный прогноз по карте — в AstroOrbi.`,
     alternates: { canonical: `/horoscope/${s.slug}`, languages: { ru: `/horoscope/${s.slug}`, en: `/en/horoscope/${s.slug}`, "x-default": `/horoscope/${s.slug}` } },
     openGraph: pageOg(`/horoscope/${s.slug}`),
   };
@@ -44,8 +44,8 @@ export default async function SignHoroscopePage({ params }: { params: { sign: st
 
   const faq = [
     { q: `Для кого этот гороскоп?`, a: `Для рождённых с ${s.dates} — солнечный знак ${s.ru}. Если вы родились на границе дат, точный знак покажет расчёт натальной карты.` },
-    { q: `Почему гороскоп ${s.ruGen} общий для всех?`, a: `Под знаком ${s.ruGen} рождена примерно одна двенадцатая людей. Общий гороскоп описывает фон дня для знака; личные события зависят от вашей полной карты — её мы разбираем в Astro Orb.` },
-    { q: "Когда обновляется прогноз?", a: "Каждую ночь по московскому времени. Прогнозы на завтра, неделю и месяц доступны в Astro Orb вместе с личными транзитами." },
+    { q: `Почему гороскоп ${s.ruGen} общий для всех?`, a: `Под знаком ${s.ruGen} рождена примерно одна двенадцатая людей. Общий гороскоп описывает фон дня для знака; личные события зависят от вашей полной карты — её мы разбираем в AstroOrbi.` },
+    { q: "Когда обновляется прогноз?", a: "Каждую ночь по московскому времени. Прогнозы на завтра, неделю и месяц доступны в AstroOrbi вместе с личными транзитами." },
   ];
 
   const nowMsk = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Moscow" });
@@ -56,7 +56,7 @@ export default async function SignHoroscopePage({ params }: { params: { sign: st
     datePublished: nowMsk,
     dateModified: nowMsk,
     inLanguage: "ru-RU",
-    author: { "@type": "Organization", name: "Astro Orb" },
+    author: { "@type": "Organization", name: "AstroOrbi" },
     mainEntityOfPage: `/horoscope/${s.slug}`,
   };
 

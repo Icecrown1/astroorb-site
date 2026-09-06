@@ -4,7 +4,7 @@ import type { Locale } from "./i18n";
 /**
  * Детерминированный генератор общего гороскопа (сид = дата + знак).
  * Это трафик-магнит для ISR-страниц до подключения GPT-5-пайплайна
- * (server/lib/prompts/horoscope*.md в Astro Orb). Точка интеграции:
+ * (server/lib/prompts/horoscope*.md в AstroOrbi). Точка интеграции:
  * замените composeHoroscope() на fetch к бэкенду и оставьте revalidate.
  */
 
@@ -151,7 +151,7 @@ export function composeHoroscope(sign: Sign, date: Date, shift = 0, locale: Loca
 
 /**
  * Основной источник гороскопа для страниц знаков.
- * Если задан HOROSCOPE_API_URL (бэкенд Astro Orb, GET /api/public/sign-horoscope/:sign),
+ * Если задан HOROSCOPE_API_URL (бэкенд AstroOrbi, GET /api/public/sign-horoscope/:sign),
  * берёт AI-гороскоп от GPT (кэш на бэкенде — 12 вызовов/день). Иначе или при ошибке —
  * детерминированный композер. Работает на сервере (SSG/ISR), CORS не нужен.
  */

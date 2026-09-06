@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS = [
   { q: "What is the Destiny Matrix?", a: "A birth-date method that maps your date onto the 22 major arcana of tarot. Each position of the matrix — personality, family line, karma, money — carries one of 22 energies with a 'plus' and 'minus' expression." },
   { q: "How is it calculated?", a: "The digits of your birth date are reduced to numbers from 1 to 22. The day gives the personal arcana, the full sum gives the destiny arcana; further positions combine these numbers." },
-  { q: "Is this astrology?", a: "No — it's a numerological system that uses tarot imagery. Many people use both: the birth chart for the psyche's mechanics, the matrix as a language of life scenarios. Astro Orb calculates both." },
+  { q: "Is this astrology?", a: "No — it's a numerological system that uses tarot imagery. Many people use both: the birth chart for the psyche's mechanics, the matrix as a language of life scenarios. AstroOrbi calculates both." },
   { q: "What does the full reading add?", a: "The complete matrix: family-line programs, the karmic tail, the money zone, purpose by ages — with AI explanations of how your specific energies interact." },
 ];
 
@@ -31,7 +31,7 @@ export default function EnMatrixPage() {
           Destiny Matrix — <span className="grad-text">calculate by birth date</span>
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-muted">
-          Two key energies open instantly and free; the full layout of all positions is in Astro Orb.
+          Two key energies open instantly and free; the full layout of all positions is in AstroOrbi.
         </p>
         <div className="mt-10">
           <MatrixCalculator locale="en" />

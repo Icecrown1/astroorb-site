@@ -66,7 +66,7 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "cta",
         label: "How this retrograde crosses your chart",
-        text: "Astro Orb overlays the 2026 transits on your natal chart and shows which life areas all three loops will touch — with dates and practical advice.",
+        text: "AstroOrbi overlays the 2026 transits on your natal chart and shows which life areas all three loops will touch — with dates and practical advice.",
         ctaId: "mercury",
       },
     ],
@@ -134,7 +134,7 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "cta",
         label: "Lunations mapped to your houses",
-        text: "Astro Orb shows which house of your chart every new and full moon activates — and sends the key dates in advance.",
+        text: "AstroOrbi shows which house of your chart every new and full moon activates — and sends the key dates in advance.",
         ctaId: "moon",
       },
     ],
@@ -180,7 +180,7 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "cta",
         label: "Your ascendant in one minute",
-        text: "Build your chart in Astro Orb: ascendant, all 10 planets and houses — with a full AI reading of how it all works in your life.",
+        text: "Build your chart in AstroOrbi: ascendant, all 10 planets and houses — with a full AI reading of how it all works in your life.",
         ctaId: "asc",
       },
     ],
@@ -234,7 +234,7 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "cta",
         label: "Your Moon, fully decoded",
-        text: "Astro Orb reads your Moon by sign, house and aspects: what you need to feel grounded and how to use it in love and work.",
+        text: "AstroOrbi reads your Moon by sign, house and aspects: what you need to feel grounded and how to use it in love and work.",
         ctaId: "moon_natal",
       },
     ],
@@ -276,7 +276,7 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "cta",
         label: "Full synastry from two charts",
-        text: "Astro Orb builds both birth charts and reads the pair across every layer: love, money, daily life, crisis points — with a rating and honest wording.",
+        text: "AstroOrbi builds both birth charts and reads the pair across every layer: love, money, daily life, crisis points — with a rating and honest wording.",
         ctaId: "synastry",
       },
     ],

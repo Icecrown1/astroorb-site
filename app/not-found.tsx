@@ -10,7 +10,7 @@ export default function NotFound() {
         Такого адреса нет. Зато есть натальная карта, матрица судьбы и гороскопы.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <CTA page="404" cta="open">Открыть Astro Orb</CTA>
+        <CTA page="404" cta="open">Открыть AstroOrbi</CTA>
         <Link
           href="/"
           className="inline-flex items-center rounded-full border border-hairline px-6 py-3 text-sm text-ink hover:border-iris/40"

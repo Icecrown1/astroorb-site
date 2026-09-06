@@ -4,7 +4,7 @@ export const SITE_URL =
 export const BOT_USERNAME =
   process.env.NEXT_PUBLIC_BOT_USERNAME ?? "AstroOrbBot";
 
-export const SITE_NAME = "Astro Orb";
+export const SITE_NAME = "AstroOrbi";
 
 /**
  * Сквозная атрибуция (ТЗ §2): каждый deep-link формируется как
@@ -38,7 +38,7 @@ export function pageOg(path: string, locale: "ru" | "en" = "ru") {
         url: en ? "/og-en.png" : "/og.png",
         width: 1200,
         height: 630,
-        alt: en ? "Astro Orb — AI astrologer in Telegram" : "Astro Orb — AI-астролог в Telegram",
+        alt: en ? "AstroOrbi — AI astrologer in Telegram" : "AstroOrbi — AI-астролог в Telegram",
       },
     ],
   };

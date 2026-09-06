@@ -32,10 +32,12 @@ export default function Nav({ locale = "ru" }: { locale?: Locale }) {
         <nav className="flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border border-hairline bg-void/70 px-5 py-2.5 backdrop-blur-xl">
           <Link
             href="/"
-            className="font-display text-sm tracking-wide text-ink"
+            className="flex items-center"
             onClick={() => setOpen(false)}
+            aria-label="AstroOrbi"
           >
-            Astro <span className="grad-text">Orb</span>
+            {/* Фирменный вордмарк astro⊛rbi (brand v1) */}
+            <img src="/brand/wordmark.svg" alt="AstroOrbi" className="h-[22px] w-auto" />
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">

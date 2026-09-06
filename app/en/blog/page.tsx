@@ -6,7 +6,7 @@ import { pageOg } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Astrology Blog: Transits, the Moon, Birth Charts",
   description:
-    "Practical astrology without the fluff: exact transit dates via Swiss Ephemeris, birth chart guides, the Moon and compatibility. The Astro Orb blog.",
+    "Practical astrology without the fluff: exact transit dates via Swiss Ephemeris, birth chart guides, the Moon and compatibility. The AstroOrbi blog.",
   alternates: { canonical: "/en/blog", languages: { ru: "/blog", en: "/en/blog", "x-default": "/blog" } },
   openGraph: pageOg("/en/blog", "en"),
 };

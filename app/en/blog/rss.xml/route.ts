@@ -19,7 +19,7 @@ export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Astro Orb — astrology blog</title>
+    <title>AstroOrbi — astrology blog</title>
     <link>${SITE_URL}/en/blog</link>
     <description>Practical astrology: transits, the Moon, birth charts, compatibility</description>
     <language>en</language>

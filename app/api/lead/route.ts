@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   const api = process.env.HOROSCOPE_API_URL;
   if (!api) {
     return NextResponse.json(
-      { ok: false, error: "Сервис расчёта временно недоступен. Попробуйте позже или откройте Astro Orb в Telegram." },
+      { ok: false, error: "Сервис расчёта временно недоступен. Попробуйте позже или откройте AstroOrbi в Telegram." },
       { status: 503 },
     );
   }
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(data, { status: upstream.status });
   } catch {
     return NextResponse.json(
-      { ok: false, error: "Расчёт занял слишком много времени. Попробуйте ещё раз — или откройте Astro Orb в Telegram." },
+      { ok: false, error: "Расчёт занял слишком много времени. Попробуйте ещё раз — или откройте AstroOrbi в Telegram." },
       { status: 504 },
     );
   }

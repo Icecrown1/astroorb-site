@@ -21,7 +21,7 @@ const FAQ_ITEMS = [
   { q: "How much can I trust sign compatibility?", a: "Sun-sign compatibility is the first, most general layer: the base blend of elements and strategies. The real picture appears in synastry — overlaying two complete birth charts, where the Moon, Venus, Mars and cross-chart aspects all count." },
   { q: "How is the percentage calculated here?", a: "By classical rules: element combination (fire, earth, air, water), modality interaction, and the angular distance between signs (trines, squares, oppositions). The calculation is deterministic — one pair always gives one result." },
   { q: "What's inside the full pair reading?", a: "Synastry from two charts: feelings and passion, money and everyday life, communication, crisis points and the pair's resources. Plus AI answers to questions about your relationship." },
-  { q: "Do I need my partner's birth date?", a: "Not for the sign-based reading — signs are enough. For precise synastry in Astro Orb you need both birth dates; times are helpful but optional." },
+  { q: "Do I need my partner's birth date?", a: "Not for the sign-based reading — signs are enough. For precise synastry in AstroOrbi you need both birth dates; times are helpful but optional." },
 ];
 
 export default function EnCompatibilityPage() {
@@ -74,7 +74,7 @@ export default function EnCompatibilityPage() {
           <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-hairline bg-surface p-6 sm:flex-row sm:items-center">
             <p className="text-sm text-muted sm:flex-1">
               78 sign pairs live on this site. Precise synastry from two charts is calculated in
-              Astro Orb. For one person, start with the{" "}
+              AstroOrbi. For one person, start with the{" "}
               <Link href="/en/natal-chart" className="text-iris hover:underline">birth chart</Link>.
             </p>
             <CTA page="en_compatibility" cta="hub_bottom">Pair synastry</CTA>

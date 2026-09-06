@@ -36,7 +36,7 @@ const T = {
     solar: "Solar Return",
     legal:
       "Secure payments, one-click cancellation. Your birth data is personal information — used for calculations only, with your consent.",
-    bottom: "Astro Orb is for entertainment and self-reflection purposes.",
+    bottom: "AstroOrbi is for entertainment and self-reflection purposes.",
   },
 } as const;
 
@@ -83,7 +83,7 @@ export default function Footer({ locale = "ru" }: { locale?: Locale }) {
         </div>
 
         <div>
-          <h2 className="text-xs uppercase tracking-[0.2em] text-muted">Astro Orb</h2>
+          <h2 className="text-xs uppercase tracking-[0.2em] text-muted">AstroOrbi</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link className="text-ink/80 hover:text-ink" href={p("/pricing")}>{t.pricing}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/about")}>{t.about}</Link></li>
@@ -94,7 +94,7 @@ export default function Footer({ locale = "ru" }: { locale?: Locale }) {
         </div>
       </div>
       <div className="border-t border-hairline py-6 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Astro Orb. {t.bottom}
+        © {new Date().getFullYear()} AstroOrbi. {t.bottom}
       </div>
     </footer>
   );

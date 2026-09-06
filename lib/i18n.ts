@@ -25,7 +25,7 @@ export const UI = {
     footer: {
       tools: "Инструменты",
       horoscopes: "Гороскопы",
-      brand: "Astro Orb",
+      brand: "AstroOrbi",
       disclaimer:
         "Сервис носит развлекательно-познавательный характер и не заменяет консультации специалистов. Оплата — чеки по 54-ФЗ. Персональные данные обрабатываются согласно 152-ФЗ.",
       solar: "Соляр",
@@ -53,7 +53,7 @@ export const UI = {
       firstImpression: "первое впечатление",
       innerSupport: "внутренняя опора",
       ascNeedsTime: "укажите время рождения",
-      unlockText: "Полная расшифровка всех 10 планет, домов и аспектов — уже рассчитана и ждёт вас в Astro Orb",
+      unlockText: "Полная расшифровка всех 10 планет, домов и аспектов — уже рассчитана и ждёт вас в AstroOrbi",
       unlockCta: "Открыть полный разбор",
       addTimeHint:
         "Добавьте время рождения — откроется асцендент: то, каким вас видят при первой встрече, и точная сетка домов.",
@@ -79,9 +79,9 @@ export const UI = {
     footer: {
       tools: "Tools",
       horoscopes: "Horoscopes",
-      brand: "Astro Orb",
+      brand: "AstroOrbi",
       disclaimer:
-        "Astro Orb is for entertainment and self-reflection; it does not replace professional advice. Payments are processed securely; personal data is used only for calculations.",
+        "AstroOrbi is for entertainment and self-reflection; it does not replace professional advice. Payments are processed securely; personal data is used only for calculations.",
       solar: "Solar Return",
       pricing: "Pricing",
       about: "About",
@@ -107,7 +107,7 @@ export const UI = {
       firstImpression: "first impression",
       innerSupport: "inner support",
       ascNeedsTime: "add your birth time",
-      unlockText: "The full reading of all 10 planets, houses and aspects is already calculated and waiting for you in Astro Orb",
+      unlockText: "The full reading of all 10 planets, houses and aspects is already calculated and waiting for you in AstroOrbi",
       unlockCta: "Open my full reading",
       addTimeHint:
         "Add your birth time to unlock the ascendant — how people see you at first meeting — and the exact house grid.",

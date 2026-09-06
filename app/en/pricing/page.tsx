@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS = [
   { q: "Can I pay from outside Russia?", a: "Yes — via TON cryptocurrency or Telegram Stars, both available worldwide right inside Telegram. Card payments are currently processed in rubles." },
-  { q: "What are 'stars'?", a: "The internal currency of Astro Orb features: full readings, Oracle questions and forecasts each cost a few stars. Subscriptions refill your balance monthly; unused stars roll over while the subscription is active." },
+  { q: "What are 'stars'?", a: "The internal currency of AstroOrbi features: full readings, Oracle questions and forecasts each cost a few stars. Subscriptions refill your balance monthly; unused stars roll over while the subscription is active." },
   { q: "How do I cancel?", a: "In one click inside the Mini App — no emails, no support tickets. Paid time keeps working until the period ends." },
   { q: "Is there a free tier?", a: "Yes, forever: the birth chart with the wheel and short planet descriptions. Subscriptions add full AI readings and premium tools." },
 ];

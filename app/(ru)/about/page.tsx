@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "О проекте: технология, точность, методология",
   description:
-    "Расчёты Swiss Ephemeris по эфемеридам NASA JPL, AI-интерпретации, честная оплата. Технология и методология Astro Orb.",
+    "Расчёты Swiss Ephemeris по эфемеридам NASA JPL, AI-интерпретации, честная оплата. Технология и методология AstroOrbi.",
   alternates: { canonical: "/about", languages: { ru: "/about", en: "/en/about", "x-default": "/about" } },
   openGraph: pageOg("/about"),
 };
@@ -23,7 +23,7 @@ export default function AboutPage() {
           Астрология, в которой <span className="grad-text">астрономия — настоящая</span>
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-muted">
-          Astro Orb — это AI-астролог в Telegram. Мы соединили профессиональный астрономический расчёт
+          AstroOrbi — это AI-астролог в Telegram. Мы соединили профессиональный астрономический расчёт
           с языковыми моделями нового поколения, чтобы каждый мог получить разбор уровня консультации —
           за минуты и без записи за три недели.
         </p>
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-muted">
             <p>
               Мы разделяем астрономические факты и интерпретации. Положение Сатурна в вашем 10-м доме —
-              проверяемый расчёт; его трактовка — язык символов, инструмент саморефлексии. Astro Orb не
+              проверяемый расчёт; его трактовка — язык символов, инструмент саморефлексии. AstroOrbi не
               обещает «предсказать судьбу» и не заменяет врача, психолога или финансового консультанта.
               Сервис носит развлекательно-познавательный характер — и мы честно пишем это на каждой странице.
             </p>
@@ -64,7 +64,7 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal>
-          <h2 className="mt-16 font-display text-2xl md:text-3xl">Что умеет Astro Orb</h2>
+          <h2 className="mt-16 font-display text-2xl md:text-3xl">Что умеет AstroOrbi</h2>
           <ul className="mt-5 space-y-3 text-[15px] leading-relaxed text-muted">
             <li>✦ <Link href="/natal-chart" className="text-iris hover:underline">Натальная карта</Link> — 10 планет, дома, аспекты, кликабельные разборы</li>
             <li>✦ <Link href="/compatibility" className="text-iris hover:underline">Совместимость</Link> — синастрия по двум полным картам</li>
@@ -82,7 +82,7 @@ export default function AboutPage() {
               в Mini App в разделе оплаты.
             </p>
             <div className="mt-5">
-              <CTA page="about" cta="bottom">Открыть Astro Orb</CTA>
+              <CTA page="about" cta="bottom">Открыть AstroOrbi</CTA>
             </div>
           </div>
         </Reveal>

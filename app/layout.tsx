@@ -9,8 +9,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/brand/icon-192.png", sizes: "192x192" }],
+    apple: "/brand/apple-touch-icon.png",
+  },
   title: {
-    default: "Натальная карта с точностью NASA — AI-астролог Astro Orb в Telegram",
+    default: "Натальная карта с точностью NASA — AI-астролог AstroOrbi в Telegram",
     template: `%s — ${SITE_NAME}`,
   },
   openGraph: {
@@ -18,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     url: "/",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Astro Orb — AI-астролог в Telegram" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "AstroOrbi — AI-астролог в Telegram" }],
   },
   twitter: { card: "summary_large_image", images: ["/og.png"] },
   description:

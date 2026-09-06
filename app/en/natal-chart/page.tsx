@@ -51,7 +51,7 @@ export default function EnNatalPage() {
               feeling, Mercury is thinking, Venus is love and values, Mars is action. Signs show how
               that energy is colored: Mars in Aries acts directly, Mars in Libra negotiates. Houses
               answer "where": career, family, money, relationships — twelve life arenas. The full
-              reading connects all three layers, and that's exactly what the AI in Astro Orb does for
+              reading connects all three layers, and that's exactly what the AI in AstroOrbi does for
               your specific chart.
             </p>
           </div>
