@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Бесплатный расклад Таро онлайн — задай свой вопрос",
   description:
     "Первый расклад Таро — бесплатно: задайте один вопрос и получите три карты с подробной AI-интерпретацией прямо в Telegram. Без оплаты, карты и регистрации.",
-  alternates: { canonical: "/tarot-free", languages: { ru: "/tarot-free", "x-default": "/tarot-free" } },
+  alternates: { canonical: "/tarot-free", languages: { ru: "/tarot-free", en: "/en/tarot-free", "x-default": "/tarot-free" } },
   openGraph: pageOg("/tarot-free"),
 };
 

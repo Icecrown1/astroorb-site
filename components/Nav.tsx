@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { trackCta } from "@/lib/track";
 
 const LINKS_BASE = [
+  { href: "/tarot-free", key: "tarot" },
   { href: "/natal-chart", key: "natal" },
   { href: "/matrix", key: "matrix" },
   { href: "/compatibility", key: "compat" },

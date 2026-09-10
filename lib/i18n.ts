@@ -13,6 +13,7 @@ export function ctaPage(locale: Locale, page: string): string {
 export const UI = {
   ru: {
     nav: {
+      tarot: "Таро бесплатно",
       natal: "Натальная карта",
       matrix: "Матрица судьбы",
       compat: "Совместимость",
@@ -67,6 +68,7 @@ export const UI = {
   },
   en: {
     nav: {
+      tarot: "Free Tarot",
       natal: "Birth chart",
       matrix: "Destiny matrix",
       compat: "Compatibility",
