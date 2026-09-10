@@ -43,3 +43,8 @@ export function pageOg(path: string, locale: "ru" | "en" = "ru") {
     ],
   };
 }
+
+/** Прямая ссылка в мини-апп со start-параметром (t.me/<bot>?startapp=...) */
+export function miniAppLink(startapp: string): string {
+  return `https://t.me/${BOT_USERNAME}?startapp=${startapp}`;
+}
