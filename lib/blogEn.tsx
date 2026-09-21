@@ -64,6 +64,14 @@ export const ARTICLES_EN: Article[] = [
         text: "Important: the retrograde touches everyone differently. It hits hardest if your personal planets sit in water signs — you can check that in a minute with the [free birth chart calculator](/en/natal-chart). How exactly the transit lands in your houses is what a personal horoscope is for.",
       },
       {
+        type: "faq",
+        items: [
+          { q: "When is the next Mercury retrograde in 2026?", a: "The three 2026 periods are: February 26 – March 20 (Pisces), June 29 – July 24 (Cancer), and October 24 – November 13 (Scorpio), Moscow time. The last window of the year runs October 24 to November 13." },
+          { q: "How long does Mercury retrograde last?", a: "About three weeks each time, three times a year. Add roughly a week of 'shadow' on each side, when Mercury crosses the same degrees at normal speed." },
+          { q: "What signs are affected by Mercury retrograde 2026?", a: "The retrogrades happen in Pisces, Cancer and Scorpio — all three water signs. They touch everyone, but natal planets in these signs feel the review themes most directly." },
+        ],
+      },
+      {
         type: "cta",
         label: "How this retrograde crosses your chart",
         text: "AstroOrbi overlays the 2026 transits on your natal chart and shows which life areas all three loops will touch — with dates and practical advice.",

@@ -15,8 +15,8 @@ export function generateMetadata({ params }: { params: { arcana: string } }): Me
   const a = arcanaBySlug(params.arcana);
   if (!a) return {};
   return {
-    title: `Аркан ${a.n} «${a.ru}» в матрице судьбы — значение`,
-    description: `Аркан ${a.n} (${a.ru}) в матрице судьбы: ${a.keyword}. Проявление в плюсе и минусе, задача энергии и как перевести её в ресурс.`,
+    title: `Аркан ${a.n} «${a.ru}» в матрице судьбы — значение по дате рождения`,
+    description: `Аркан ${a.n} (${a.ru}) в матрице судьбы: ${a.keyword}. Как рассчитать аркан ${a.n} по дате рождения, проявление в плюсе и минусе, задача энергии.`,
     alternates: { canonical: `/matrix/${a.slug}`, languages: { ru: `/matrix/${a.slug}`, en: `/en/matrix/${a.slug}`, "x-default": `/matrix/${a.slug}` } },
     openGraph: pageOg(`/matrix/${a.slug}`),
   };
@@ -32,6 +32,7 @@ export default function ArcanaPage({ params }: { params: { arcana: string } }) {
   const faq = [
     { q: `Что значит аркан ${a.n} в личной позиции?`, a: `Личный аркан «${a.ru}» описывает характер и стиль действий: ${a.keyword}. В плюсе это ресурс, в минусе — повторяющийся сценарий, который стоит осознать.` },
     { q: `Аркан «${a.ru}» — это хорошо или плохо?`, a: "В матрице судьбы нет плохих арканов: у каждой энергии есть плюс- и минус-проявление. Задача — замечать минус и осознанно переводить энергию в плюс." },
+    { q: `Как рассчитать аркан ${a.n} по дате рождения?`, a: `Позиции матрицы считаются из даты рождения одним правилом: числа больше 22 сводятся суммой цифр к диапазону 1–22. Аркан ${a.n} появляется в вашей матрице, если он выпал в одной из позиций расчёта — в личных точках, родовом квадрате, каналах или кармическом хвосте.` },
     { q: "Где посмотреть весь расклад матрицы?", a: "Полный расклад со всеми позициями (род, карма, деньги, предназначение по возрастам) строится в AstroOrbi за минуту по дате рождения." },
   ];
 
@@ -77,6 +78,9 @@ export default function ArcanaPage({ params }: { params: { arcana: string } }) {
             <CTA page={`matrix_${a.slug}`} cta="unlock">Мой полный расклад</CTA>
             <Link href="/matrix" className="text-sm text-iris hover:underline">
               ← Калькулятор матрицы
+            </Link>
+            <Link href="/blog/kak-rasschitat-matricu-sudby" className="text-sm text-iris hover:underline">
+              Как считается матрица →
             </Link>
           </div>
         </div>
