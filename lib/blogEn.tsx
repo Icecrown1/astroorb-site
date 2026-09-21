@@ -281,6 +281,312 @@ export const ARTICLES_EN: Article[] = [
       },
     ],
   },
+  {
+    slug: "destiny-matrix-calculator-guide",
+    title: "Destiny Matrix by Date of Birth: Step-by-Step Calculation Guide",
+    h1: "How to calculate your Destiny Matrix",
+    description:
+      "Calculate the Destiny Matrix by hand: the five base points, the ancestral square, and a fully worked example. No birth time needed — plus a free instant calculator.",
+    date: "2026-09-19",
+    minutes: 6,
+    tag: "Destiny Matrix",
+    blocks: [
+      {
+        type: "p",
+        text: "The Destiny Matrix is a numerology system built on the 22 Major Arcana of Tarot: every position derives from your date of birth through simple arithmetic. Unlike a [birth chart](/en/natal-chart), no birth time or city is needed — day, month and year are enough.",
+      },
+      { type: "h2", text: "The one rule: reduce to 1–22" },
+      {
+        type: "p",
+        text: "Everything rests on a single rule: **if a number exceeds 22, add its digits** and repeat until you land between 1 and 22. Numbers of 22 or less stay as they are. Example: 1985 → 1+9+8+5 = 23 → 2+3 = 5. But a birthday on the 15th stays Arcana 15 — reducing it would be a mistake.",
+      },
+      { type: "h2", text: "The five base points" },
+      {
+        type: "list",
+        items: [
+          "**A — day of birth** (reduced if above 22): how people read you on first contact.",
+          "**B — month of birth**: innate talents.",
+          "**C — digit sum of the year**: the material sphere and its lessons.",
+          "**D = A+B+C** reduced: the karmic foundation.",
+          "**E = A+B+C+D** reduced: the center — your comfort zone and core.",
+        ],
+      },
+      { type: "h2", text: "Worked example: March 24, 1981" },
+      {
+        type: "table",
+        head: ["Position", "Calculation", "Arcana"],
+        rows: [
+          ["A (day)", "24 → 2+4", "6"],
+          ["B (month)", "March", "3"],
+          ["C (year)", "1+9+8+1", "19"],
+          ["D (foundation)", "6+3+19 = 28 → 10", "10"],
+          ["E (center)", "6+3+19+10 = 38 → 11", "11"],
+        ],
+      },
+      {
+        type: "p",
+        text: "From here the ancestral square (sums of adjacent corners), the Sky and Earth lines, the [money channel](/en/blog/money-channel-destiny-matrix) and the [karmic tail](/en/blog/karmic-tail-destiny-matrix) are built with the same add-and-reduce rule.",
+      },
+      {
+        type: "cta",
+        label: "Your full Destiny Matrix in 30 seconds — free",
+        text: "AstroOrbi builds the complete octagram from your date: all 22 energies, the ancestral square, both channels, with an AI reading of every position.",
+        ctaId: "matrix_calc",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Do I need my birth time for the Destiny Matrix?", a: "No. Only day, month and year are used — that's what separates the Matrix from a natal chart, where exact time and city are required." },
+          { q: "Is the Destiny Matrix scientific?", a: "No — there is no evidence base. Treat it as a self-reflection tool built on Tarot symbolism, not as a verdict about your life." },
+          { q: "Why do different sites show different results?", a: "The base points match everywhere — they're pure arithmetic. Differences appear in the channels' intermediate points, which different schools compute differently; a trustworthy service publishes its method." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "karmic-tail-destiny-matrix",
+    title: "Karmic Tail in the Destiny Matrix: the Three Numbers Readers Start With",
+    h1: "The Karmic Tail: your three-number key",
+    description:
+      "What the karmic tail means in the Destiny Matrix, how to calculate its three energies from your birth date, and why a proper reading starts there.",
+    date: "2026-09-20",
+    minutes: 5,
+    tag: "Destiny Matrix",
+    blocks: [
+      {
+        type: "p",
+        text: "The karmic tail is the set of three numbers at the bottom of the [Destiny Matrix](/en/blog/destiny-matrix-calculator-guide), below the center. The tradition reads them as unfinished lessons that keep repeating until worked through — which is why professional readings start with the tail, not with talents.",
+      },
+      { type: "h2", text: "How to calculate it" },
+      {
+        type: "list",
+        items: [
+          "**First number** — the karmic foundation D (day + month + year digit sum, reduced to 1–22).",
+          "**Second number** — D + the matrix center E, reduced.",
+          "**Third number** — first + second, reduced.",
+        ],
+      },
+      {
+        type: "p",
+        text: "For March 24, 1981: D = 10, center E = 11. Second number: 10+11 = 21. Third: 10+21 = 31 → 4. The tail reads **10 — 21 — 4**.",
+      },
+      { type: "h2", text: "Why the tail starts \"in the minus\"" },
+      {
+        type: "p",
+        text: "In the method's logic these energies begin in their shadow expression — that's what makes them lessons. The entry points of the [money channel](/en/blog/money-channel-destiny-matrix) and the love channel sit right next to the tail, so an unworked tail holds both spheres back: the same scenario repeats in money or relationships until the root is addressed.",
+      },
+      {
+        type: "cta",
+        label: "Get your karmic tail decoded",
+        text: "AstroOrbi computes your three tail energies and explains each one: how the shadow shows up automatically — and what working it through looks like.",
+        ctaId: "matrix_tail",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Is a karmic tail a bad sign?", a: "No. It marks a recurring lesson, not a curse — the same energies in their resourceful expression become strengths." },
+          { q: "Do people born on the same date share a tail?", a: "The numbers match, as does the whole matrix. How the energies express depends on environment, choices and experience — which is why lives still differ." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "money-channel-destiny-matrix",
+    title: "Money Channel in the Destiny Matrix: How Money Enters and What Blocks It",
+    h1: "The Money Channel: entry, unfolding, block",
+    description:
+      "How the Destiny Matrix money channel works: the money entry point, the profession energy, and material karma — calculated from your date of birth.",
+    date: "2026-09-21",
+    minutes: 5,
+    tag: "Destiny Matrix",
+    blocks: [
+      {
+        type: "p",
+        text: "The money channel is one of the most requested zones of the [Destiny Matrix](/en/blog/destiny-matrix-calculator-guide): three linked energies describing how money enters your life, where your earning potential peaks, and what blocks the flow.",
+      },
+      { type: "h2", text: "The three points" },
+      {
+        type: "list",
+        items: [
+          "**Money entry point** — how income shows up: computed from the matrix center and the lower-right corner of the ancestral square.",
+          "**The \"profession\" energy** — the field where the channel unfolds and earning potential is highest.",
+          "**Material karma** — corner C (year digit sum): the lesson that throttles the flow until passed.",
+        ],
+      },
+      {
+        type: "p",
+        text: "For March 24, 1981: center E = 11, lower-right ancestral corner = 11 (19+10 = 29 → 11), so the money entry point is 11+11 = **Arcana 22**. Each energy is then read through its resourceful and shadow sides.",
+      },
+      { type: "h2", text: "An honest caveat" },
+      {
+        type: "p",
+        text: "No matrix \"activates money flows\" or guarantees income — that's marketing, not the method. Used honestly, the channel is a reflection tool: which earning strategies feel native to you, which scripts you keep repeating via the [karmic tail](/en/blog/karmic-tail-destiny-matrix), and what you're ready to change.",
+      },
+      {
+        type: "cta",
+        label: "Your money channel, decoded",
+        text: "AstroOrbi computes all three channel energies from your date and reads each one: the plus, the minus, and where to start.",
+        ctaId: "matrix_money",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "What does an energy \"in the minus\" mean here?", a: "The arcana's shadow expression — strategies that undercut earning, like undervaluing your work or fearing visibility. The same energy in the plus works for income." },
+          { q: "Can the money channel change over time?", a: "The numbers are fixed by your birth date; their expression isn't. The same combination can shift from shadow to resource as you work with it." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "tarot-card-of-the-day",
+    title: "Tarot Card of the Day: How to Draw and Read It Without the Mystique",
+    h1: "Card of the day: a one-minute practice",
+    description:
+      "How the daily Tarot card works: framing the question, reading Majors vs Minors, whether to use reversals, and keeping a card journal. Free daily card online.",
+    date: "2026-09-22",
+    minutes: 4,
+    tag: "Tarot",
+    blocks: [
+      {
+        type: "p",
+        text: "The card of the day is Tarot at its simplest: one card in the morning sets a lens for the day. You don't need all 78 meanings memorized — you need one minute and an honest question.",
+      },
+      { type: "h2", text: "Frame the question right" },
+      {
+        type: "p",
+        text: "The working formula isn't \"what will happen today\" but **\"what should I pay attention to today\"**. The first turns the card into a prophecy to chase or refute; the second turns it into a lens — you notice what resonates and make decisions more deliberately.",
+      },
+      { type: "h2", text: "Majors, Minors, court cards" },
+      {
+        type: "list",
+        items: [
+          "**A Major Arcana** — a day with a loud theme: watch the big picture, not the routine.",
+          "**A numbered Minor** — a specific sphere: Wands for action, Cups for feelings, Swords for decisions and words, Pentacles for money and the body.",
+          "**A court card** — often the role you're playing today, or a person beside you.",
+        ],
+      },
+      { type: "h2", text: "Keep a card journal" },
+      {
+        type: "p",
+        text: "The real growth tool is a short evening note: which card came up, what in the day echoed it. A month later you'll have a personal statistics of meanings — worth more than any reference book. AstroOrbi saves your card history automatically and personalizes readings with your [birth chart](/en/natal-chart).",
+      },
+      {
+        type: "cta",
+        label: "Draw your card of the day — free",
+        text: "A full 78-card deck, honest randomness, and an AI reading tuned to your day. One card daily — free, always.",
+        ctaId: "tarot_daily",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Can I redraw until I like the card?", a: "You can, but the practice works when you read the first card. Redrawing turns it into a generator of pleasant pictures." },
+          { q: "What if I draw Death or the Tower?", a: "In a daily context these are cards of endings and sudden clarity, not literal disasters: Death asks what to release today, the Tower asks which structure is shaking and needs an honest look." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-to-read-a-natal-chart",
+    title: "How to Read a Natal Chart: a Step-by-Step Plan for Beginners",
+    h1: "How to read your natal chart",
+    description:
+      "A beginner's reading order for the natal chart: the Big Three, planets in signs, houses, and aspects — plus the classic beginner mistakes to avoid.",
+    date: "2026-09-23",
+    minutes: 7,
+    tag: "Natal chart",
+    blocks: [
+      {
+        type: "p",
+        text: "A natal chart is a snapshot of the sky at your birth, computed astronomically (AstroOrbi uses **Swiss Ephemeris** — the same data professional astrologers rely on). It looks overwhelming, but the reading order is well established.",
+      },
+      { type: "h2", text: "Step 1: the Big Three" },
+      {
+        type: "list",
+        items: [
+          "**Sun** — the core: what fuels you and what you're building.",
+          "**Moon** — emotional needs: what makes you feel safe. More in our [Moon sign guide](/en/blog/moon-sign-meaning).",
+          "**Rising sign** — your interface and first impression; it requires an exact birth time — [here's how to find yours](/en/blog/how-to-find-your-rising-sign).",
+        ],
+      },
+      { type: "h2", text: "Step 2: personal planets in signs" },
+      {
+        type: "p",
+        text: "Next come Mercury (thinking and speech), Venus (love and values), Mars (action and anger). The sign shows **how** the planet operates: Mars in Aries acts head-on, Mars in Libra negotiates. For outer planets, start by checking their houses only.",
+      },
+      { type: "h2", text: "Step 3: houses" },
+      {
+        type: "p",
+        text: "Houses are twelve life spheres, from self-presentation (1st) to career (10th) and the subconscious (12th). A planet's house shows **where** its story unfolds: Venus in the 10th charms a career, in the 4th — a home. An empty house isn't an empty sphere; the sign on its cusp describes it.",
+      },
+      { type: "h2", text: "Step 4: aspects" },
+      {
+        type: "p",
+        text: "Aspects are angles between planets: conjunctions and trines blend energies easily, squares and oppositions create the friction that drives growth. As a beginner, check the major aspects to your Sun, Moon and Rising — those are the loudest storylines.",
+      },
+      {
+        type: "cta",
+        label: "Your natal chart with an AI reading",
+        text: "AstroOrbi computes your chart with Swiss Ephemeris and explains it in plain language: Big Three, planets, houses and aspects — layer by layer, no jargon.",
+        ctaId: "natal_guide",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Can I build a chart without my birth time?", a: "Yes, partially: Sun, planets in signs and an approximate Moon remain, but the Rising sign and exact houses need the time. Birth records usually have it." },
+          { q: "How is this different from a magazine horoscope?", a: "A magazine horoscope sorts everyone into 12 groups by Sun sign. A natal chart is an individual astronomical calculation — two identical charts are practically impossible." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "solar-return-chart-guide",
+    title: "Solar Return Chart: Your Personal Year from Birthday to Birthday",
+    h1: "Solar Return: your astrological year",
+    description:
+      "What a Solar Return chart is, how it differs from a calendar-year horoscope, the key points to read, and why your year starts on your birthday.",
+    date: "2026-09-24",
+    minutes: 5,
+    tag: "Forecasts",
+    blocks: [
+      {
+        type: "p",
+        text: "A Solar Return is the chart of the moment the Sun comes back to the exact degree it held at your birth. It happens once a year, on or within a day of your birthday, and sets the themes of your personal year — birthday to birthday, not January to December.",
+      },
+      { type: "h2", text: "How it differs from a yearly horoscope" },
+      {
+        type: "p",
+        text: "A calendar-year horoscope describes transits for everyone at once. A Solar Return is individual: it's computed from your [natal chart](/en/blog/how-to-read-a-natal-chart), the precise moment of the Sun's return, and the place you're in at that moment. Two people with the same Sun sign get different Solar Returns.",
+      },
+      { type: "h2", text: "The key points to read" },
+      {
+        type: "list",
+        items: [
+          "**The Solar Return Ascendant** — the style of the whole year.",
+          "**The house holding the Sun** — the year's central sphere: career, relationships, home, learning.",
+          "**Stelliums** — where the density of events will gather.",
+          "**The year ruler's position** — the tone and the resource to lean on.",
+        ],
+      },
+      { type: "h2", text: "How to actually use it" },
+      {
+        type: "p",
+        text: "A Solar Return isn't a \"this happens in May\" forecast — it's a map of accents: which spheres get loud, where effort is needed, where support flows. Read it at the start of your personal year and revisit mid-year to check how the themes are landing.",
+      },
+      {
+        type: "cta",
+        label: "Your Solar Return for this year",
+        text: "AstroOrbi computes the exact moment of your Sun's return with Swiss Ephemeris and reads the year sphere by sphere: main themes, strong months, watch zones.",
+        ctaId: "solar_year",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Why count the year from my birthday, not January 1?", a: "Because the anchor is an astronomical event — the Sun returning to your natal degree. The calendar date has no relation to your chart." },
+          { q: "Does my location on my birthday affect the chart?", a: "Yes: the Solar Return houses are computed for the coordinates where you are at the moment of the return — which is why some people deliberately travel for their birthday." },
+        ],
+      },
+    ],
+  },
 ];
 
 export const articleBySlugEn = (slug: string) => ARTICLES_EN.find((a) => a.slug === slug) || null;

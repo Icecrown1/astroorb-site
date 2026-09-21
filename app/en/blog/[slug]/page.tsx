@@ -67,6 +67,37 @@ function Render({ b, ctaSlug }: { b: Block; ctaSlug: string }) {
           </table>
         </div>
       );
+    case "faq":
+      return (
+        <div className="mt-10">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: b.items.map((i) => ({
+                  "@type": "Question",
+                  name: i.q,
+                  acceptedAnswer: { "@type": "Answer", text: i.a },
+                })),
+              }),
+            }}
+          />
+          <h2 className="font-display text-xl md:text-2xl">{b.title ?? "FAQ"}</h2>
+          <div className="mt-5 space-y-3">
+            {b.items.map((i) => (
+              <details key={i.q} className="group rounded-2xl border border-hairline bg-surface px-5 py-4 open:bg-raised">
+                <summary className="cursor-pointer list-none text-[15px] font-medium text-ink marker:content-none">
+                  <span aria-hidden="true" className="mr-3 inline-block text-iris transition-transform duration-300 group-open:rotate-45">+</span>
+                  {i.q}
+                </summary>
+                <p className="mt-3 pl-7 text-sm leading-relaxed text-muted">{i.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      );
     case "cta":
       return (
         <div className="shell mt-10">
