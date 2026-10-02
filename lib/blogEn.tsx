@@ -595,6 +595,158 @@ export const ARTICLES_EN: Article[] = [
       },
     ],
   },
+  {
+    slug: "personal-arcana-by-birth-date",
+    title: "Your Personal Arcana by Birth Date: One-Minute Calculation",
+    h1: "Your arcana by date of birth",
+    description:
+      "How to find your personal arcana in the Destiny Matrix: the 1–22 reduction rule, worked examples, and what the number does — and doesn't — say about you.",
+    date: "2026-10-02",
+    minutes: 4,
+    tag: "Destiny Matrix",
+    blocks: [
+      {
+        type: "p",
+        text: "\"What's my arcana?\" is the most common Destiny Matrix question. The short answer: your personal arcana is **your day of birth**, reduced to the 1–22 range. Here's the rule and what to do with the result.",
+      },
+      { type: "h2", text: "The rule" },
+      {
+        type: "list",
+        items: [
+          "Born on the 1st–22nd: that number is your arcana — born on the 7th → Arcana 7 (the Chariot).",
+          "Born on the 23rd–31st: add the digits — 25 → 2+5 = Arcana 7; 31 → 3+1 = Arcana 4; 29 → 2+9 = 11.",
+          "Nothing else gets reduced: numbers of 22 and below stay as they are.",
+        ],
+      },
+      { type: "h2", text: "Worked examples" },
+      {
+        type: "table",
+        head: ["Birth date", "Calculation", "Personal arcana"],
+        rows: [
+          ["March 7", "7 ≤ 22", "7 — The Chariot"],
+          ["July 18", "18 ≤ 22", "18 — The Moon"],
+          ["January 24", "2+4", "6 — The Lovers"],
+          ["August 30", "3+0", "3 — The Empress"],
+        ],
+      },
+      { type: "h2", text: "One point out of twenty" },
+      {
+        type: "p",
+        text: "The personal arcana describes character and style of action — but the full [Destiny Matrix](/en/blog/destiny-matrix-calculator-guide) holds about twenty positions: the [karmic tail](/en/blog/karmic-tail-destiny-matrix), the [money channel](/en/blog/money-channel-destiny-matrix), the ancestral square and age-based purposes. The same energy reads differently in each position.",
+      },
+      {
+        type: "cta",
+        label: "Your full matrix in 30 seconds — free",
+        text: "AstroOrbi computes every position of the octagram from your date and explains each energy: where it sits in your chart and how it's working now.",
+        ctaId: "matrix_personal",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "What's the difference between the personal arcana and the destiny arcana?", a: "The personal arcana comes from the day of birth; the destiny arcana (karmic foundation) from the sum of day, month and year. The first is about character, the second about the life task." },
+          { q: "My arcana is 13 — Death. Is that bad?", a: "No. There are no bad arcana: 13 is the energy of transformation and clean endings. In its resource it belongs to people who renew their lives easily; in shadow it's fear of change." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "birthday-compatibility-test",
+    title: "Birthday Compatibility Test: What Two Birth Dates Can Really Tell You",
+    h1: "Birthday compatibility: an honest test",
+    description:
+      "How a birthday compatibility test actually works: what Sun signs show, what a full-date synastry adds, and what the percentage really means. Free couple check.",
+    date: "2026-10-03",
+    minutes: 5,
+    tag: "Compatibility",
+    blocks: [
+      {
+        type: "p",
+        text: "There are thousands of compatibility tests online, and most generate a random percentage for the sake of a pretty number. Here's the honest version: what two birth dates **can** tell you, what they can't, and what a defensible calculation looks like.",
+      },
+      { type: "h2", text: "Level 1: Sun signs" },
+      {
+        type: "p",
+        text: "Day and month give the zodiac signs — already a meaningful layer: elements and modality describe the couple's default dynamic. Fire and air accelerate each other, earth gives water a shape, two fixed signs clash in stubbornness. Check your pair in the [all-78-combinations table](/en/compatibility): [Aries and Leo](/en/compatibility/aries-leo), [Cancer and Capricorn](/en/compatibility/cancer-capricorn), [Gemini and Libra](/en/compatibility/gemini-libra) and the rest.",
+      },
+      { type: "h2", text: "Level 2: the full date" },
+      {
+        type: "p",
+        text: "The full date adds the [Moon](/en/blog/moon-sign-compatibility) (emotional fit), Venus and Mars (love language and temperament) — planetary positions computed astronomically from ephemerides. That's [birth-date synastry](/en/blog/birth-date-compatibility): comparing two charts layer by layer — feelings, money, daily life, crisis points.",
+      },
+      { type: "h2", text: "What the percentage really means" },
+      {
+        type: "list",
+        items: [
+          "An honest score measures the **default ease of contact**, not the couple's verdict: 60% isn't \"worse\" than 85% — it's a different dynamic with different tasks.",
+          "A low Sun-sign score is often offset by a strong Moon or Venus–Mars link — which is why a full-date test beats a sign-only test.",
+          "No calculation accounts for choices, experience and the work a couple puts in: astrology describes starting conditions, not the ending.",
+        ],
+      },
+      {
+        type: "cta",
+        label: "Full compatibility from two birth dates",
+        text: "AstroOrbi builds both charts with Swiss Ephemeris and reads the pair across every layer: love, money, daily life, crisis points — with a rating and honest wording.",
+        ctaId: "compat_test",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Can I test compatibility with just birth dates, no birth times?", a: "Yes: Sun signs, the Moon (with a small margin on boundary days), Venus and Mars all compute from the date. Birth time adds houses and the Ascendant — a refinement, not a requirement." },
+          { q: "What's a good compatibility percentage?", a: "Above 70% means easy contact by default, 50–70% a workable pair with growth zones, below 50% a dynamic that needs awareness. Either way it's starting conditions, not a sentence." },
+          { q: "Why do different tests give different percentages?", a: "Most tests only use Sun signs or simply generate a number. Full-date calculations based on real planetary positions agree with each other far better." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "moon-sign-compatibility",
+    title: "Moon Sign Compatibility: Why Emotional Fit Beats Sun Signs",
+    h1: "Moon compatibility: home, trust, \"my person\"",
+    description:
+      "Moon sign compatibility explained: why the Moon governs the feeling of \"my person\", how to find both Moons from birth dates, and which combinations flow easiest.",
+    date: "2026-10-04",
+    minutes: 5,
+    tag: "Compatibility",
+    blocks: [
+      {
+        type: "p",
+        text: "Couples meet through their Suns and live together through their Moons. The Sun sign is who we are on stage; the [Moon](/en/blog/moon-sign-meaning) is who we are at home: how we get angry, what calms us, what we count as care. The feeling of \"my person\" — or \"everything's fine but it's hard\" — is usually a Moon story.",
+      },
+      { type: "h2", text: "Finding both Moons" },
+      {
+        type: "p",
+        text: "The Moon changes sign roughly every 2.5 days, so a birth date alone pins it down almost always — birth time matters only on boundary days. Build a [natal chart](/en/blog/how-to-read-a-natal-chart) for each date; the Moon sign is in the first lines.",
+      },
+      { type: "h2", text: "Which Moon pairings flow easiest" },
+      {
+        type: "list",
+        items: [
+          "**Moons in the same element** — one emotional language: water Moons feel without words, earth Moons build a home, fire Moons ignite, air Moons talk it through.",
+          "**Moons in allied elements** (fire+air, earth+water) — different but compatible needs.",
+          "**Moons in square** (say, fire and water) — the classic \"we love each other but keep hurting each other\": care is expressed in different languages. Workable, with awareness.",
+        ],
+      },
+      { type: "h2", text: "The Moon isn't the whole story" },
+      {
+        type: "p",
+        text: "The full picture is Moons plus Venus and Mars (attraction), Suns (goals) and the cross-chart aspects. The [birthday compatibility test](/en/blog/birthday-compatibility-test) covers the sign level; AstroOrbi's synastry computes every layer from two dates and names both the resources and the friction points honestly.",
+      },
+      {
+        type: "cta",
+        label: "Your couple's Moon compatibility",
+        text: "AstroOrbi finds both Moons from two birth dates and reads the emotional layer: care languages, triggers, and what to do with the differences.",
+        ctaId: "compat_moon",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "Which matters more — Sun or Moon compatibility?", a: "For long-term life together, astrologers traditionally check the Moons first: daily life, trust and emotional safety. Suns matter more for shared goals and mutual respect." },
+          { q: "Our Moons are square — should we break up?", a: "No. A Moon square means different care languages, not a ban on the relationship: such couples thrive once both know about the difference and translate care into the partner's language." },
+          { q: "Is having the Moon in the same sign good?", a: "A Moon conjunction is one of the warmest links — identical emotional needs. The flip side: shared blind spots, since you also grieve and avoid in the same way." },
+        ],
+      },
+    ],
+  },
 ];
 
 export const articleBySlugEn = (slug: string) => ARTICLES_EN.find((a) => a.slug === slug) || null;
