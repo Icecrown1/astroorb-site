@@ -16,6 +16,7 @@ export const SLUG_RU_TO_EN: Record<string, string> = {
   "test-na-sovmestimost-po-date-rozhdeniya": "birthday-compatibility-test",
   "sovmestimost-po-lune": "moon-sign-compatibility",
   "retrogradnyj-merkurij-v-skorpione-2026": "mercury-retrograde-scorpio-2026",
+  "lunnyj-kalendar-noyabr-2026": "moon-calendar-november-2026",
 };
 export const SLUG_EN_TO_RU: Record<string, string> = Object.fromEntries(
   Object.entries(SLUG_RU_TO_EN).map(([ru, en]) => [en, ru]),

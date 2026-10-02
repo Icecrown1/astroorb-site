@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://astroorb.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://astroorbi.com";
 
 export const BOT_USERNAME =
   process.env.NEXT_PUBLIC_BOT_USERNAME ?? "AstroOrbBot";

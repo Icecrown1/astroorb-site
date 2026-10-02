@@ -9,7 +9,7 @@ import { trackCta } from "@/lib/track";
 import { SLUG_EN_TO_RU, SLUG_RU_TO_EN } from "@/lib/blogSlugs";
 
 /** Разделы, у которых пока нет EN-версии: переключатель ведёт на главную EN. */
-const RU_ONLY_PREFIXES = ["/planets"];
+const RU_ONLY_PREFIXES: string[] = [];
 
 /** Адрес той же страницы на другом языке (слаги статей в RU и EN разные). */
 function counterpartPath(locale: Locale, pathname: string): string {

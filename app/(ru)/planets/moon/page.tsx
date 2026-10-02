@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Луна в знаках зодиака: калькулятор по дате рождения и значение",
   description:
     "Узнайте знак Луны по дате рождения бесплатно и прочитайте, что он значит: эмоциональные потребности, Луна у женщины и у мужчины, в отношениях. Все 12 знаков.",
-  alternates: { canonical: "/planets/moon" },
+  alternates: { canonical: "/planets/moon", languages: { ru: "/planets/moon", en: "/en/planets/moon", "x-default": "/planets/moon" } },
   openGraph: pageOg("/planets/moon"),
 };
 

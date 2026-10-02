@@ -24,7 +24,10 @@ export function generateMetadata({ params }: { params: { sign: string } }): Meta
   return {
     title: `Луна ${prep} у женщины и мужчины: значение в натальной карте`,
     description: `Луна ${prep}: ${m.tagline.toLowerCase()}. Эмоциональные потребности, проявление у женщины и у мужчины, в отношениях.${dignity} Калькулятор знака Луны.`,
-    alternates: { canonical: `/planets/moon/${s.slug}` },
+    alternates: {
+      canonical: `/planets/moon/${s.slug}`,
+      languages: { ru: `/planets/moon/${s.slug}`, en: `/en/planets/moon/${s.slug}`, "x-default": `/planets/moon/${s.slug}` },
+    },
     openGraph: { ...pageOg(`/planets/moon/${s.slug}`), type: "article" },
   };
 }

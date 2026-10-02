@@ -39,9 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
     ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
     ...allPairs().flatMap((p) => pair(`/compatibility/${p.pair}`, 0.6, "monthly")),
-    // Луна в знаках — пока только RU (EN-версия — следующим этапом)
-    { url: `${SITE_URL}/planets/moon`, lastModified: new Date("2026-10-02"), changeFrequency: "monthly" as const, priority: 0.8 },
-    ...SIGNS.map((s) => ({ url: `${SITE_URL}/planets/moon/${s.slug}`, lastModified: new Date("2026-10-02"), changeFrequency: "monthly" as const, priority: 0.7 })),
+    // Луна в знаках — RU + EN с hreflang
+    ...pair("/planets/moon", 0.8, "monthly"),
+    ...SIGNS.flatMap((s) => pair(`/planets/moon/${s.slug}`, 0.7, "monthly")),
     ...pair("/blog", 0.8, "weekly"),
     ...ARTICLES.flatMap((a) => {
       const languages = {
