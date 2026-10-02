@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: a.title,
     description: a.description,
     alternates: { canonical: `/blog/${a.slug}`, languages: { ru: `/blog/${a.slug}`, en: `/en/blog/${SLUG_RU_TO_EN[a.slug]}`, "x-default": `/blog/${a.slug}` } },
-    openGraph: { ...pageOg(`/blog/${a.slug}`), type: "article", publishedTime: a.date },
+    openGraph: { ...pageOg(`/blog/${a.slug}`), type: "article", publishedTime: a.date, modifiedTime: a.updated ?? a.date },
   };
 }
 
@@ -116,14 +116,16 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   const a = articleBySlug(params.slug);
   if (!a) notFound();
 
-  const related = ARTICLES.filter((x) => x.slug !== a.slug).slice(0, 3);
+  // Похожие: сначала та же рубрика, затем самые свежие
+  const byNew = [...ARTICLES].filter((x) => x.slug !== a.slug).sort((x, y) => y.date.localeCompare(x.date));
+  const related = [...byNew.filter((x) => x.tag === a.tag), ...byNew.filter((x) => x.tag !== a.tag)].slice(0, 3);
   const ld = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: a.title,
     description: a.description,
     datePublished: a.date,
-    dateModified: a.date,
+    dateModified: a.updated ?? a.date,
     inLanguage: "ru-RU",
     author: { "@type": "Organization", name: "AstroOrbi", url: SITE_URL },
     publisher: { "@id": `${SITE_URL}/#org` },
@@ -137,6 +139,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <div className="mt-6 flex items-center gap-3 text-xs text-muted">
         <span className="rounded-full border border-hairline px-3 py-1 uppercase tracking-[0.14em]">{a.tag}</span>
         <time dateTime={a.date}>{fmtDate(a.date)}</time>
+        {a.updated && <span>· обновлено <time dateTime={a.updated}>{fmtDate(a.updated)}</time></span>}
         <span>· {a.minutes} мин чтения</span>
       </div>
       <h1 className="mt-4 font-display text-3xl leading-tight md:text-4xl">{a.h1}</h1>

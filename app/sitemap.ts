@@ -4,6 +4,12 @@ import { SIGNS } from "@/lib/zodiac";
 import { ARCANA } from "@/lib/arcana";
 import { allPairs } from "@/lib/compat";
 import { ARTICLES, SLUG_RU_TO_EN } from "@/lib/blog";
+import { ARTICLES_EN } from "@/lib/blogEn";
+
+const enUpdated = (slug: string) => {
+  const e = ARTICLES_EN.find((x) => x.slug === slug);
+  return e ? e.updated ?? e.date : undefined;
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -33,6 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
     ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
     ...allPairs().flatMap((p) => pair(`/compatibility/${p.pair}`, 0.6, "monthly")),
+    // Луна в знаках — пока только RU (EN-версия — следующим этапом)
+    { url: `${SITE_URL}/planets/moon`, lastModified: new Date("2026-10-02"), changeFrequency: "monthly" as const, priority: 0.8 },
+    ...SIGNS.map((s) => ({ url: `${SITE_URL}/planets/moon/${s.slug}`, lastModified: new Date("2026-10-02"), changeFrequency: "monthly" as const, priority: 0.7 })),
     ...pair("/blog", 0.8, "weekly"),
     ...ARTICLES.flatMap((a) => {
       const languages = {
@@ -41,8 +50,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "x-default": `${SITE_URL}/blog/${a.slug}`,
       };
       return [
-        { url: languages.ru, lastModified: new Date(a.date), changeFrequency: "monthly" as const, priority: 0.7, alternates: { languages } },
-        { url: languages.en, lastModified: new Date(a.date), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages } },
+        { url: languages.ru, lastModified: new Date(a.updated ?? a.date), changeFrequency: "monthly" as const, priority: 0.7, alternates: { languages } },
+        { url: languages.en, lastModified: new Date(enUpdated(SLUG_RU_TO_EN[a.slug]) ?? a.date), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages } },
       ];
     }),
   ];

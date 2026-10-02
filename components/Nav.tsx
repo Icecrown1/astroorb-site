@@ -6,6 +6,24 @@ import { deepLink } from "@/lib/site";
 import { UI, localePath, ctaPage, type Locale } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
 import { trackCta } from "@/lib/track";
+import { SLUG_EN_TO_RU, SLUG_RU_TO_EN } from "@/lib/blogSlugs";
+
+/** Разделы, у которых пока нет EN-версии: переключатель ведёт на главную EN. */
+const RU_ONLY_PREFIXES = ["/planets"];
+
+/** Адрес той же страницы на другом языке (слаги статей в RU и EN разные). */
+function counterpartPath(locale: Locale, pathname: string): string {
+  if (locale === "en") {
+    const path = pathname.replace(/^\/en/, "") || "/";
+    const blog = path.match(/^\/blog\/([^/]+)$/);
+    if (blog) return SLUG_EN_TO_RU[blog[1]] ? `/blog/${SLUG_EN_TO_RU[blog[1]]}` : "/blog";
+    return path;
+  }
+  if (RU_ONLY_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`))) return "/en";
+  const blog = pathname.match(/^\/blog\/([^/]+)$/);
+  if (blog) return SLUG_RU_TO_EN[blog[1]] ? `/en/blog/${SLUG_RU_TO_EN[blog[1]]}` : "/en/blog";
+  return `/en${pathname === "/" ? "" : pathname}`;
+}
 
 const LINKS_BASE = [
   { href: "/tarot-free", key: "tarot" },
@@ -23,7 +41,7 @@ export default function Nav({ locale = "ru" }: { locale?: Locale }) {
   const t = UI[locale];
   const pathname = usePathname() || "/";
   const LINKS = LINKS_BASE.filter((l) => (t.nav as Record<string, string | undefined>)[l.key]).map((l) => ({ href: localePath(locale, l.href), label: (t.nav as Record<string, string>)[l.key] }));
-  const counterpart = locale === "en" ? (pathname.replace(/^\/en/, "") || "/") : `/en${pathname === "/" ? "" : pathname}`;
+  const counterpart = counterpartPath(locale, pathname);
   const switchTo = locale === "en" ? "ru" : "en";
   const setLangCookie = () => { document.cookie = `astro_lang=${switchTo};path=/;max-age=31536000`; };
 

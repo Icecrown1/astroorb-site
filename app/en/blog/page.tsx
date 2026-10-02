@@ -27,7 +27,7 @@ export default function BlogPageEn() {
       </p>
 
       <div className="mt-12 grid gap-5">
-        {ARTICLES.map((a) => (
+        {[...ARTICLES].sort((x, y) => y.date.localeCompare(x.date)).map((a) => (
           <Link key={a.slug} href={`/en/blog/${a.slug}`} className="shell group block">
             <article className="core p-6 md:p-8">
               <div className="flex items-center gap-3 text-xs text-muted">

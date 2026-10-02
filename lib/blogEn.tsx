@@ -9,11 +9,12 @@ import type { Article } from "@/lib/blog";
 export const ARTICLES_EN: Article[] = [
   {
     slug: "mercury-retrograde-2026",
-    title: "Mercury Retrograde 2026: Exact Dates and What Actually Matters",
+    title: "Mercury Retrograde 2026: Exact Dates, Shadows & the Next One (Oct 24)",
     h1: "Mercury Retrograde in 2026: dates, signs, practice",
     description:
-      "All three Mercury retrograde periods of 2026 with exact station times computed via Swiss Ephemeris, the signs involved, and a no-hysteria guide to what's worth doing.",
+      "All three 2026 Mercury retrogrades with exact station times via Swiss Ephemeris. Next: Oct 24 – Nov 13 in Scorpio, shadow Oct 4 – Nov 30. What to do and what to avoid.",
     date: "2026-08-23",
+    updated: "2026-10-02",
     minutes: 6,
     tag: "Transits",
     blocks: [
@@ -34,6 +35,25 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "p",
         text: "Notice the pattern: all three loops of 2026 run through **water signs** — Pisces, Cancer and Scorpio. In astrological logic that shifts the usual 'tech and logistics glitches' story toward feelings, memory and things left unsaid: the biggest communication breakdowns these weeks are emotional, not technical.",
+      },
+      { type: "h2", text: "The next one: Mercury retrograde in Scorpio, Oct 24 – Nov 13" },
+      {
+        type: "p",
+        text: "The last loop of 2026 has the longest tails: counting the shadow periods it spans almost two months — **October 4 to November 30**. The shadow is when Mercury travels the same degrees it will cover in retrograde: before the turn, the themes up for review start surfacing; after it, delayed decisions can finally be finalized.",
+      },
+      {
+        type: "table",
+        head: ["Phase", "Dates (Moscow time, UTC+3)", "What's happening"],
+        rows: [
+          ["Pre-shadow", "Oct 4 – Oct 24", "Mercury first crosses 5°–21° Scorpio: issues you'll revisit start to show"],
+          ["Retrograde", "Oct 24, 10:12 – Nov 13, 18:53", "Backward motion from 21° to 5° Scorpio: reviews, delays, returns"],
+          ["Sun conjunction", "Nov 4", "Mid-loop: usually the moment it becomes clear what's being reworked"],
+          ["Post-shadow", "Nov 13 – Nov 30", "Mercury returns to 21°: postponed decisions can be finalized"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Scorpio and its natural 8th house stand for shared money, trust and what stays hidden. So this time the review tends to touch loans, debts, taxes, joint property and things long left unsaid. To see which area of life the loop hits for you, read [Mercury retrograde in Scorpio for each sign](/en/blog/mercury-retrograde-scorpio-2026).",
       },
       { type: "h2", text: "What retrograde actually is" },
       {
@@ -66,9 +86,10 @@ export const ARTICLES_EN: Article[] = [
       {
         type: "faq",
         items: [
-          { q: "When is the next Mercury retrograde in 2026?", a: "The three 2026 periods are: February 26 – March 20 (Pisces), June 29 – July 24 (Cancer), and October 24 – November 13 (Scorpio), Moscow time. The last window of the year runs October 24 to November 13." },
-          { q: "How long does Mercury retrograde last?", a: "About three weeks each time, three times a year. Add roughly a week of 'shadow' on each side, when Mercury crosses the same degrees at normal speed." },
-          { q: "What signs are affected by Mercury retrograde 2026?", a: "The retrogrades happen in Pisces, Cancer and Scorpio — all three water signs. They touch everyone, but natal planets in these signs feel the review themes most directly." },
+          { q: "When is the next Mercury retrograde in 2026?", a: "The last one of 2026 runs October 24 – November 13 in Scorpio; counting the shadow periods, October 4 – November 30. The earlier periods were February 26 – March 20 (Pisces) and June 29 – July 24 (Cancer)." },
+          { q: "When is the first Mercury retrograde of 2027?", a: "February 9 – March 3, 2027: Mercury stations retrograde in Pisces and backs into Aquarius." },
+          { q: "How long does Mercury retrograde last?", a: "About three weeks each time, three times a year. Add two to three weeks of 'shadow' on each side, when Mercury crosses the same degrees — so a full cycle runs about eight weeks." },
+          { q: "Which signs are affected by Mercury retrograde 2026?", a: "The retrogrades happen in Pisces, Cancer and Scorpio — all three water signs. They touch everyone, but people with natal planets in these signs feel the review themes most directly." },
         ],
       },
       {
@@ -743,6 +764,117 @@ export const ARTICLES_EN: Article[] = [
           { q: "Which matters more — Sun or Moon compatibility?", a: "For long-term life together, astrologers traditionally check the Moons first: daily life, trust and emotional safety. Suns matter more for shared goals and mutual respect." },
           { q: "Our Moons are square — should we break up?", a: "No. A Moon square means different care languages, not a ban on the relationship: such couples thrive once both know about the difference and translate care into the partner's language." },
           { q: "Is having the Moon in the same sign good?", a: "A Moon conjunction is one of the warmest links — identical emotional needs. The flip side: shared blind spots, since you also grieve and avoid in the same way." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "mercury-retrograde-scorpio-2026",
+    title: "Mercury Retrograde in Scorpio 2026: What It Means for Each Sign",
+    h1: "Mercury retrograde in Scorpio: a forecast for every sign",
+    description:
+      "Mercury retrograde in Scorpio, Oct 24 – Nov 13, 2026: which area of life it touches for each of the 12 signs, the shadow dates, and practical advice.",
+    date: "2026-10-02",
+    minutes: 7,
+    tag: "Transits",
+    blocks: [
+      {
+        type: "p",
+        text: "From **October 24 to November 13, 2026**, Mercury moves backwards through Scorpio — from 21° back to 5°. Counting the shadow periods, the cycle stretches from October 4 to November 30. Below: which part of life the loop touches for each sign, and what to do about it. The general dates and rules are in our [Mercury retrograde 2026 guide](/en/blog/mercury-retrograde-2026).",
+      },
+      {
+        type: "table",
+        head: ["Phase", "Dates (UTC)"],
+        rows: [
+          ["Pre-shadow", "Oct 4 – Oct 24"],
+          ["Retrograde", "Oct 24, 07:12 – Nov 13, 15:53"],
+          ["Sun conjunction", "Nov 4"],
+          ["Post-shadow", "Nov 13 – Nov 30"],
+        ],
+      },
+      { type: "h2", text: "What this retrograde is about" },
+      {
+        type: "p",
+        text: "Scorpio and its natural 8th house cover shared resources and trust: loans, debts, taxes, inheritance, joint property — and whatever usually stays off-screen. A Mercury retrograde here tends to work like a photographic developer: the unsaid surfaces, forgotten documents turn up, old money questions come back. Best use of the period: finish what has been hanging for months, and don't take on new obligations without reading them twice.",
+      },
+      { type: "h2", text: "How to read this forecast" },
+      {
+        type: "p",
+        text: "For each sign, the area of life is the house Scorpio occupies when you count from that sign. Read the forecast for your Sun sign — and, for more precision, for your rising sign, which sets the houses of your personal chart. [How to find your rising sign](/en/blog/how-to-find-your-rising-sign).",
+      },
+      { type: "h2", text: "Aries — shared money and intimacy (8th house)" },
+      {
+        type: "p",
+        text: "Loans, debts, joint budgets and taxes come up for review. A good window to close old obligations and sort your paperwork. Push new loans and big shared purchases to December, after the shadow ends on November 30.",
+      },
+      { type: "h2", text: "Taurus — partnerships (7th house)" },
+      {
+        type: "p",
+        text: "The loop runs across your relationship axis: unfinished conversations return, sometimes people from the past do too. Read business agreements aloud with your partner. Don't make marriage, divorce or break-up calls in the heat of the moment — the picture clears by late November.",
+      },
+      { type: "h2", text: "Gemini — work and routine (6th house)" },
+      {
+        type: "p",
+        text: "Mercury is your ruler, so you'll feel this one more than most. Workflow glitches, schedule changes, tech hiccups; tasks you thought were done come back. A good time to reorganize your to-do system, reset your daily routine, and finally book that postponed check-up.",
+      },
+      { type: "h2", text: "Cancer — love, creativity, children (5th house)" },
+      {
+        type: "p",
+        text: "You'll feel pulled back to abandoned hobbies and creative projects — follow that impulse. Old flames may reach out: before replying, ask yourself what has changed since. With children, listen more and explain less.",
+      },
+      { type: "h2", text: "Leo — home and family (4th house)" },
+      {
+        type: "p",
+        text: "Renovations drag on, moves need more approvals, family talks drift into the past — which can be useful. Double-check any real-estate deal: documents, deadlines, terms. A good time to declutter and go through family archives.",
+      },
+      { type: "h2", text: "Virgo — communication, learning, short trips (3rd house)" },
+      {
+        type: "p",
+        text: "Mercury rules your sign too, and the loop crosses its most Mercurial area. Expect mixed-up messages, short-trip delays, misunderstandings with siblings and neighbors. Best use: finish a course you started, edit old drafts, return to half-read books.",
+      },
+      { type: "h2", text: "Libra — personal money (2nd house)" },
+      {
+        type: "p",
+        text: "Time to review your budget: subscriptions, recurring costs, what you charge for your work. Payments may be delayed — or money you're owed may finally come back. Big purchases after November 30; until then, research and compare.",
+      },
+      { type: "h2", text: "Scorpio — you (1st house)" },
+      {
+        type: "p",
+        text: "The retrograde runs through your own sign, making this a season of personal review: how you present yourself, what you want from next year, which plans are outdated. Misunderstandings land personally — say important things out loud, not in hints. A birthday in these weeks is for taking stock, not forcing new starts.",
+      },
+      { type: "h2", text: "Sagittarius — rest and the hidden (12th house)" },
+      {
+        type: "p",
+        text: "Slow down: sleep, recovery, the inner work you've been postponing. Secrets — yours or others' — may surface. Journaling, therapy and resolving old grudges go well; big public announcements before mid-November don't.",
+      },
+      { type: "h2", text: "Capricorn — friends and plans (11th house)" },
+      {
+        type: "p",
+        text: "Long-term goals and your social circle get a review. Old acquaintances return; group chats and team agreements get messier — put decisions in writing. A good time to figure out which 2027 plans are really yours.",
+      },
+      { type: "h2", text: "Aquarius — career (10th house)" },
+      {
+        type: "p",
+        text: "Work decisions stall, managers revisit agreements, old projects and contacts return — sometimes with an interesting offer. Read public statements and your résumé twice. If you're changing jobs, sign after November 30.",
+      },
+      { type: "h2", text: "Pisces — travel and higher learning (9th house)" },
+      {
+        type: "p",
+        text: "Travel plans shift: delays, reschedules, visa and document hiccups — book refundable. On the bright side, it's a great time to return to study and re-examine beliefs you haven't questioned in a while.",
+      },
+      {
+        type: "cta",
+        label: "How the loop crosses your chart",
+        text: "A sign forecast is an average. AstroOrbi overlays the retrograde on your natal chart and shows the exact house, the aspects to your planets, and the dates it peaks for you.",
+        ctaId: "mercury_signs",
+      },
+      {
+        type: "faq",
+        items: [
+          { q: "When does Mercury retrograde end in 2026?", a: "Mercury stations direct on November 13 at 15:53 UTC. Counting the post-shadow, the cycle closes on November 30. It's the last Mercury retrograde of 2026; the next begins February 9, 2027." },
+          { q: "Can I sign contracts during Mercury retrograde in Scorpio?", a: "Yes — read them twice and keep room to adjust the terms. Be extra careful with loans, mortgages and splitting property: those are Scorpio themes." },
+          { q: "Why doesn't the forecast for my sign match what's happening?", a: "A Sun-sign forecast is an average. Your rising sign and chart houses define the exact area, so read the forecast for your rising sign too." },
+          { q: "Which signs feel this retrograde most?", a: "Scorpio, since the loop runs through it, plus Gemini and Virgo, whose ruler is Mercury. It's most noticeable for anyone with the Sun, Moon or rising sign in Scorpio." },
         ],
       },
     ],
