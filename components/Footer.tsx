@@ -64,6 +64,7 @@ export default function Footer({ locale = "ru" }: { locale?: Locale }) {
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link className="text-ink/80 hover:text-ink" href={p("/natal-chart")}>{t.natal}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/matrix")}>{t.matrix}</Link></li>
+            <li><Link className="text-ink/80 hover:text-ink" href={p("/matrix/compatibility")}>{locale === "ru" ? "Совместимость по матрице" : "Matrix compatibility"}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/compatibility")}>{t.compat}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/horoscope")}>{t.horo}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/planets/moon")}>{locale === "ru" ? "Луна в знаках" : "Moon signs"}</Link></li>

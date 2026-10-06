@@ -103,6 +103,19 @@ export default function CompatibilityPage() {
         </Reveal>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pt-12">
+        <Link
+          href="/matrix/compatibility"
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-iris/30 bg-surface p-6 transition-[border-color,transform] duration-300 ease-out-strong hover:-translate-y-0.5 hover:border-iris/60"
+        >
+          <span>
+            <span className="block font-display text-lg">Совместимость по матрице судьбы</span>
+            <span className="mt-1 block text-sm text-muted">Только по датам рождения, без времени и места: центр пары и пять зон союза</span>
+          </span>
+          <span aria-hidden className="text-xl text-iris transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </Link>
+      </section>
+
       <FAQ items={FAQ_ITEMS} />
     </>
   );

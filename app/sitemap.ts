@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pair("/", 1, "weekly"),
     ...pair("/natal-chart", 0.9),
     ...pair("/matrix", 0.9),
+    ...pair("/matrix/compatibility", 0.8),
     ...pair("/compatibility", 0.9),
     ...pair("/horoscope", 0.9, "daily"),
     ...pair("/solar-return", 0.7),

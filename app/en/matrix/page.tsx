@@ -62,6 +62,19 @@ export default function EnMatrixPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pt-12">
+        <Link
+          href="/en/matrix/compatibility"
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-iris/30 bg-surface p-6 transition-[border-color,transform] duration-300 ease-out-strong hover:-translate-y-0.5 hover:border-iris/60"
+        >
+          <span>
+            <span className="block font-display text-lg">Destiny Matrix compatibility</span>
+            <span className="mt-1 block text-sm text-muted">The couple matrix from two birth dates: your couple center, home life, money and shared karmic tail</span>
+          </span>
+          <span aria-hidden className="text-xl text-iris transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </Link>
+      </section>
+
       <FAQ items={FAQ_ITEMS} title="FAQ" />
     </>
   );
