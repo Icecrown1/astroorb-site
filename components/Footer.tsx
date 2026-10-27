@@ -68,6 +68,7 @@ export default function Footer({ locale = "ru" }: { locale?: Locale }) {
             <li><Link className="text-ink/80 hover:text-ink" href={p("/compatibility")}>{t.compat}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/horoscope")}>{t.horo}</Link></li>
             <li><Link className="text-ink/80 hover:text-ink" href={p("/planets/moon")}>{locale === "ru" ? "Луна в знаках" : "Moon signs"}</Link></li>
+            <li><Link className="text-ink/80 hover:text-ink" href={p("/planets/venus")}>{locale === "ru" ? "Венера в знаках" : "Venus signs"}</Link></li>
           </ul>
         </div>
 

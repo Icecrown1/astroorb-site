@@ -131,6 +131,10 @@ export default function MoonHubPage() {
             <Link href="/blog/sovmestimost-po-lune" className="text-iris hover:underline">
               «Совместимость по Луне»
             </Link>
+            . Как вы любите и кто вас привлекает, показывает другая личная планета —{" "}
+            <Link href="/planets/venus" className="text-iris hover:underline">
+              Венера в знаках
+            </Link>
             .
           </p>
         </Reveal>

@@ -43,6 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Луна в знаках — RU + EN с hreflang
     ...pair("/planets/moon", 0.8, "monthly"),
     ...SIGNS.flatMap((s) => pair(`/planets/moon/${s.slug}`, 0.7, "monthly")),
+    // Венера в знаках — RU + EN с hreflang
+    ...pair("/planets/venus", 0.8, "monthly"),
+    ...SIGNS.flatMap((s) => pair(`/planets/venus/${s.slug}`, 0.7, "monthly")),
     ...pair("/blog", 0.8, "weekly"),
     ...ARTICLES.flatMap((a) => {
       const languages = {

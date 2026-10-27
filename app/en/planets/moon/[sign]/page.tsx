@@ -152,6 +152,10 @@ export default function MoonSignPageEn({ params }: { params: { sign: string } })
           <Link href="/en/blog/moon-sign-compatibility" className="text-iris hover:underline">
             Moon sign compatibility
           </Link>
+          . How you love and who you&rsquo;re drawn to is Venus territory — see, for example,{" "}
+          <Link href={`/en/planets/venus/${s.slug}`} className="text-iris hover:underline">
+            Venus in {name}
+          </Link>
           .
         </p>
 

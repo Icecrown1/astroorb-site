@@ -153,6 +153,10 @@ export default function MoonSignPage({ params }: { params: { sign: string } }) {
           <Link href="/blog/sovmestimost-po-lune" className="text-iris hover:underline">
             «Совместимость по Луне»
           </Link>
+          . А как вы любите и кто вас привлекает, показывает Венера — например,{" "}
+          <Link href={`/planets/venus/${s.slug}`} className="text-iris hover:underline">
+            Венера {prep}
+          </Link>
           .
         </p>
 

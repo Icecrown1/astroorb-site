@@ -130,6 +130,10 @@ export default function MoonHubPageEn() {
             <Link href="/en/blog/moon-sign-compatibility" className="text-iris hover:underline">
               Moon sign compatibility
             </Link>
+            . How you love and who you&rsquo;re drawn to is shown by another personal planet —{" "}
+            <Link href="/en/planets/venus" className="text-iris hover:underline">
+              Venus in the signs
+            </Link>
             .
           </p>
         </Reveal>
