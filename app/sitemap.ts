@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { SIGNS } from "@/lib/zodiac";
 import { ARCANA } from "@/lib/arcana";
+import { hasMoneyPage, hasTailPage } from "@/lib/matrixStats";
 import { allPairs } from "@/lib/compat";
 import { ARTICLES, SLUG_RU_TO_EN } from "@/lib/blog";
 import { ARTICLES_EN } from "@/lib/blogEn";
@@ -39,6 +40,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pair("/about", 0.5, "monthly"),
     ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
     ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
+    // Арканы в денежном канале и кармическом хвосте — только RU (без hreflang)
+    ...ARCANA.filter((a) => hasMoneyPage(a.n)).map((a) => ({ url: `${SITE_URL}/matrix/${a.slug}/money-channel`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.6 })),
+    ...ARCANA.filter((a) => hasTailPage(a.n)).map((a) => ({ url: `${SITE_URL}/matrix/${a.slug}/karmic-tail`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.6 })),
     ...allPairs().flatMap((p) => pair(`/compatibility/${p.pair}`, 0.6, "monthly")),
     // Луна в знаках — RU + EN с hreflang
     ...pair("/planets/moon", 0.8, "monthly"),

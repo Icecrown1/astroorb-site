@@ -20,6 +20,9 @@ function counterpartPath(locale: Locale, pathname: string): string {
     return path;
   }
   if (RU_ONLY_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`))) return "/en";
+  // Арканы в позициях (денежный канал, кармический хвост) есть только на русском → общая EN-страница аркана
+  const position = pathname.match(/^\/matrix\/([^/]+)\/(money-channel|karmic-tail)$/);
+  if (position) return `/en/matrix/${position[1]}`;
   const blog = pathname.match(/^\/blog\/([^/]+)$/);
   if (blog) return SLUG_RU_TO_EN[blog[1]] ? `/en/blog/${SLUG_RU_TO_EN[blog[1]]}` : "/en/blog";
   return `/en${pathname === "/" ? "" : pathname}`;

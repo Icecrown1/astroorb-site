@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import { ARCANA, arcanaBySlug } from "@/lib/arcana";
+import { hasMoneyPage, hasTailPage } from "@/lib/matrixStats";
 
 export function generateStaticParams() {
   return ARCANA.map((a) => ({ arcana: a.slug }));
@@ -67,6 +68,37 @@ export default function ArcanaPage({ params }: { params: { arcana: string } }) {
             <p className="mt-2 text-[15px] leading-relaxed">{a.task}</p>
           </div>
         </div>
+
+        <h2 className="mt-12 font-display text-xl md:text-2xl">Аркан {a.n} в позициях матрицы</h2>
+        {hasMoneyPage(a.n) || hasTailPage(a.n) ? (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {hasMoneyPage(a.n) && (
+              <Link
+                href={`/matrix/${a.slug}/money-channel`}
+                className="rounded-2xl border border-hairline bg-surface p-5 transition-colors duration-300 hover:border-iris/40"
+              >
+                <span className="block font-medium">{a.n} аркан в денежном канале</span>
+                <span className="mt-1 block text-sm text-muted">Как приходят деньги, что блокирует доход, профессии</span>
+              </Link>
+            )}
+            {hasTailPage(a.n) && (
+              <Link
+                href={`/matrix/${a.slug}/karmic-tail`}
+                className="rounded-2xl border border-hairline bg-surface p-5 transition-colors duration-300 hover:border-iris/40"
+              >
+                <span className="block font-medium">{a.n} аркан в кармическом хвосте</span>
+                <span className="mt-1 block text-sm text-muted">Какой сценарий повторяется и как его проработать</span>
+              </Link>
+            )}
+          </div>
+        ) : null}
+        {!hasTailPage(a.n) && (
+          <p className="mt-4 text-[15px] leading-relaxed text-muted">
+            {a.n === 1
+              ? "По классической схеме расчёта 1 аркан не попадает ни в кармический хвост, ни в денежный канал: эти точки складываются из нескольких чисел, и их сумма не может свестись к единице. Если другой калькулятор показал вам 1 в хвосте или денежном канале, скорее всего, он считает по иной схеме."
+              : `По классической схеме расчёта ${a.n} аркан не попадает в кармический хвост: числа хвоста складываются из нескольких позиций, и их сумма не может свестись к ${a.n} ни при какой дате рождения. В денежном канале он встречается только как материальная задача — у родившихся в 2000 году.`}
+          </p>
+        )}
 
         <div className="mt-10 rounded-2xl border border-hairline bg-surface p-6">
           <p className="text-sm leading-relaxed text-muted">
