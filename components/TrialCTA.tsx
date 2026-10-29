@@ -9,14 +9,17 @@ export default function TrialCTA({
   children,
   ghost = false,
   className = "",
+  page = "tarot-free",
 }: {
   cta: string;
+  /** Страница для аналитики (по умолчанию — лендинг пробного расклада) */
+  page?: string;
   children: React.ReactNode;
   ghost?: boolean;
   className?: string;
 }) {
   const href = miniAppLink("trial");
-  const onClick = () => trackCta("tarot-free", cta);
+  const onClick = () => trackCta(page, cta);
 
   if (ghost) {
     return (

@@ -50,6 +50,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Венера в знаках — RU + EN с hreflang
     ...pair("/planets/venus", 0.8, "monthly"),
     ...SIGNS.flatMap((s) => pair(`/planets/venus/${s.slug}`, 0.7, "monthly")),
+    // Карта дня Таро — только RU (личные страницы /karta/[id] закрыты noindex и в карту сайта не входят)
+    { url: `${SITE_URL}/karta-dnya`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 },
     ...pair("/blog", 0.8, "weekly"),
     ...ARTICLES.flatMap((a) => {
       const languages = {
