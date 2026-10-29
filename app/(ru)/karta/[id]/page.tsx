@@ -75,10 +75,10 @@ export default function KartaPage({ params }: { params: { id: string } }) {
             Получить бесплатный расклад
           </TrialCTA>
           <Link
-            href="/karta-dnya"
+            href="/tarot-free"
             className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/[0.04] px-6 py-3 text-sm font-medium text-ink transition-colors duration-300 hover:border-iris/40"
           >
-            Вытянуть карту другу
+            Как устроен бесплатный расклад
           </Link>
         </div>
       </section>

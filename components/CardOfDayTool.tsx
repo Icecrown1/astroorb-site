@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { DECK, type DeckCard } from "@/lib/tarotDeck";
 import { DAILY, cleanNick } from "@/lib/tarotDaily";
-import { SITE_URL, miniAppLink } from "@/lib/site";
-import { trackCta, trackGoal } from "@/lib/track";
+import { SITE_URL } from "@/lib/site";
+import { trackGoal } from "@/lib/track";
 
 /**
  * «Карта дня» — себе или другу.
@@ -154,7 +154,7 @@ async function renderImage(d: Draw, nick: string): Promise<Blob> {
   }
 
   // Карта
-  const footer = 70;
+  const footer = 130;
   const nameBlock = 96;
   const avail = H - (y + 40) - (nameBlock + textH + 40) - footer;
   const ch = Math.min(720, Math.max(420, avail));
@@ -198,10 +198,13 @@ async function renderImage(d: Draw, nick: string): Promise<Blob> {
     ty += lineH;
   }
 
-  // Подвал
-  ctx.fillStyle = "rgba(141,147,168,0.9)";
+  // Подвал — ведёт на лид-магнит «Бесплатный расклад Таро» (/taro → /tarot-free с UTM)
+  ctx.fillStyle = "rgba(233,236,248,0.62)";
   ctx.font = `500 28px ${body}`;
-  ctx.fillText("Своя карта дня — astroorbi.com/karta-dnya", W / 2, H - 40);
+  ctx.fillText("Задайте свой вопрос картам — бесплатно", W / 2, H - 92);
+  ctx.fillStyle = "#EFC26B";
+  ctx.font = `600 38px ${body}`;
+  ctx.fillText("astroorbi.com/taro", W / 2, H - 42);
 
   return await new Promise<Blob>((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error("toBlob"))), "image/png"));
 }
@@ -399,14 +402,6 @@ export default function CardOfDayTool() {
               <button type="button" onClick={pull} className="text-iris hover:underline">
                 Перетянуть карту
               </button>
-              {" · "}
-              <a
-                href={miniAppLink("trial")}
-                onClick={() => trackCta("karta_dnya", "tool_trial")}
-                className="text-iris hover:underline"
-              >
-                Бесплатный расклад на свой вопрос ↗
-              </a>
             </p>
           </div>
         )}

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { pageOg } from "@/lib/site";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQ from "@/components/FAQ";
@@ -56,12 +55,6 @@ export default function TarotFreePage() {
           </div>
           <p className="mt-3 text-xs text-ink-soft/70">
             Одна проба для новых пользователей · данные рождения не нужны
-          </p>
-          <p className="mt-2 text-xs text-ink-soft/70">
-            Нужна просто карта на день?{" "}
-            <Link href="/karta-dnya" className="text-iris hover:underline">
-              Вытяните карту дня онлайн
-            </Link>
           </p>
         </section>
       </Reveal>
