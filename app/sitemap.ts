@@ -38,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pair("/solar-return", 0.7),
     ...pair("/pricing", 0.8),
     ...pair("/about", 0.5, "monthly"),
+    ...pair("/privacy", 0.2, "yearly"),
+    ...pair("/data-deletion", 0.1, "yearly"),
     ...SIGNS.flatMap((s) => pair(`/horoscope/${s.slug}`, 0.8, "daily")),
     ...ARCANA.flatMap((a) => pair(`/matrix/${a.slug}`, 0.7, "monthly")),
     // Арканы в денежном канале и кармическом хвосте — только RU (без hreflang)

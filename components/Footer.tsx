@@ -97,7 +97,15 @@ export default function Footer({ locale = "ru" }: { locale?: Locale }) {
         </div>
       </div>
       <div className="border-t border-hairline py-6 text-center text-xs text-muted">
-        © {new Date().getFullYear()} AstroOrbi. {t.bottom}
+        <p>© {new Date().getFullYear()} AstroOrbi. {t.bottom}</p>
+        <p className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
+          <Link className="text-ink/70 underline-offset-4 hover:text-ink hover:underline" href={p("/privacy")}>
+            {locale === "ru" ? "Политика конфиденциальности" : "Privacy Policy"}
+          </Link>
+          <Link className="text-ink/70 underline-offset-4 hover:text-ink hover:underline" href={p("/data-deletion")}>
+            {locale === "ru" ? "Удаление данных" : "Data Deletion"}
+          </Link>
+        </p>
       </div>
     </footer>
   );
